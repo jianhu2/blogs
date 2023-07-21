@@ -91,7 +91,7 @@ hasCJKLanguage = false
         aboutTopImg = "/images/about.jpg"
         # description of about page
         # 子标题
-        aboutDes = "坚持是种高贵的品质，它能帮助我们到达成功的彼岸."
+        aboutDes = "坚持是种高贵的品质，它能帮助我们到达成功的彼岸。"
 
         # default image for a post without "image" param
         # 当文章没有设置图片时，将用此图来替代
@@ -131,7 +131,7 @@ hasCJKLanguage = false
         enable = true
         # copyright
         copyRight = true
-        from = 2022
+        from = 2021
         # wheher to enable count of visitor and view
         visitor = true
         # wheher to enable theme information
