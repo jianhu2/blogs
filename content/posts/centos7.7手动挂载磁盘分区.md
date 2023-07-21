@@ -1,3 +1,14 @@
+---
+title: "centos7.7手动挂载磁盘分区"
+subtitle: ""
+date: 2023-02-27T16:19:04+08:00
+lastmod: "2023-04-21"
+draft: false
+tags: ["linux"]
+hideFromHomePage: false
+---
+
+
 # 1. centos挂载磁盘分区
 ## 1.1 系统环境
 - aliyun

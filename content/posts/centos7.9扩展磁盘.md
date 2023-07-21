@@ -1,3 +1,13 @@
+---
+title: "centos7.9扩展磁盘"
+subtitle: ""
+date: 2023-01-02T16:19:04+08:00
+lastmod: "2023-03-21"
+draft: false
+tags: ["linux"]
+hideFromHomePage: false
+---
+
 # 1. centos 扩展磁盘分区
 
 * 1.1 系统环境1

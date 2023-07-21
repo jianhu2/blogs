@@ -1,3 +1,14 @@
+---
+title: "centos 7.9离线安装docker"
+subtitle: ""
+date: 2023-03-02T16:19:04+08:00
+lastmod: "2023-04-25"
+draft: false
+tags: ["linux","docker"]
+hideFromHomePage: false
+---
+
+
 # centos 7.9安装docker
 
 # 1.离线下载docker

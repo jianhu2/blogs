@@ -1,3 +1,13 @@
+---
+title: "ubuntu宿主机部署ss-local客户端"
+subtitle: ""
+date: 2022-08-10T16:19:04+08:00
+lastmod: "2023-01-18"
+draft: false
+tags: ["linux"]
+hideFromHomePage: false
+---
+
 # shadowsocks-libev基于ubuntu宿主机部署ss-local客户端.md
 
 # 1. 安装

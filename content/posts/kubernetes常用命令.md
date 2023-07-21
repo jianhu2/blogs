@@ -1,6 +1,17 @@
+---
+title: "kubernetes常用命令"
+subtitle: ""
+date: 2023-05-10T16:19:04+08:00
+lastmod: "2023-07-20"
+draft: false
+tags: ["k8s","docker"]
+hideFromHomePage: false
+---
+
+
 # 1. 将service端口暴露到本地
 
-比如将生成环境的redis暴露到本地6379端口
+比如将生产环境的redis暴露到本地6379端口
 ```shell
 kubectl port-forward service/redis -n [namesplace] 6379:6379
 ```
@@ -35,4 +46,9 @@ kubectl describe pods product-6b5c98478b-rpgr6 --namespace=product-prod
 # 5. 从pod复制文件到宿主机
 ```shell
 kubectl cp redis-test/redis-0:/data/* .
+```
+
+# 6 复制pod里的文件到宿主机
+```
+kubectl cp service-test/redis-0:/data/* .
 ```

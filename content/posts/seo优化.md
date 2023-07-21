@@ -1,3 +1,13 @@
+---
+title: "seo网站搜索优化"
+subtitle: ""
+date: 2022-03-10T16:19:04+08:00
+lastmod: "2023-5-30"
+draft: false
+tags: ["website"]
+hideFromHomePage: false
+---
+
 # 1. seo网站搜索优化
 
 搜索排行问题，主要是两方面优化方向：

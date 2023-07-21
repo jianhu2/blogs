@@ -1,3 +1,13 @@
+---
+title: "基于ssh隧道转发端口"
+subtitle: ""
+date: 2022-05-10T16:19:04+08:00
+lastmod: "2023-01-20"
+draft: false
+tags: ["linux"]
+hideFromHomePage: false
+---
+
 # ssh端口转发(ssh port-forward)
 SSH 除了登录服务器，还有一大用途，就是作为加密通信的中介，充当两台服务器之间的通信加密跳板，使得原本不加密的通信变成加密通信。这个功能称为端口转发（port forwarding），又称 SSH 隧道（tunnel）。
 端口转发有两个主要作用：

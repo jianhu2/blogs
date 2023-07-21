@@ -1,3 +1,13 @@
+---
+title: "使用cloudflare转发ssh端口"
+subtitle: ""
+date: 2022-07-21T16:19:04+08:00
+lastmod: "2023-01-21"
+draft: false
+tags: ["website"]
+hideFromHomePage: false
+---
+
 # Cloudflare Tunnel
 cloudflare 提供的免费加密通道，通过 cloudflare 的 cnd 访问部署在内网的服务，比如 web,ssh,smb,tcp 等。
 其工作方式类似于 frp，可以将本地服务发布到公网。只不过 frp 所需的服务器 IP 在 Cloudflare Tunnel 中变成了 Cloudflare 提供的节点。
