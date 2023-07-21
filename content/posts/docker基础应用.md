@@ -5,7 +5,7 @@ date: 2021-03-02T16:19:04+08:00
 lastmod: "2023-06-21"
 draft: false
 description: "指定docker数据存储路径，常用的docker命令"
-image: "/images/docker-logo.png"
+image: "/images/Docker-build.png"
 tags: ["docker"]
 hideFromHomePage: false
 ---
