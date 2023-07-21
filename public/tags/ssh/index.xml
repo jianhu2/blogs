@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ssh on 老胡的星辰随笔</title>
+    <link>https://hujian.xyz/tags/ssh/</link>
+    <description>Recent content in ssh on 老胡的星辰随笔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Mar 2021 16:19:04 +0800</lastBuildDate><atom:link href="https://hujian.xyz/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ssh密钥对</title>
+      <link>https://hujian.xyz/posts/ssh%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E5%AF%B9/</link>
+      <pubDate>Wed, 10 Mar 2021 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/ssh%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E5%AF%B9/</guid>
+      <description>1. ssh密钥对 ssh key的类型有四种，分别是dsa、rsa、 ecdsa、ed25519。 根据数学特性，这四种类型又可以分为两大类，dsa/rsa是一类，ecdsa/ed25519是一类，后者算法更先进。 dsa因为安全问题，已不再使用了。 ecdsa因为政治原因和技术原因，也不推荐使用。 rsa是目前兼容性最好的，应用最广泛的key类型，在用ssh-keygen工具生成key的时候，默认使用的也是这种类型。不过在生成key时，如果指定的key size太小的话，也是有安全问题的，推荐key size是3072或更大。 ed25519是目前最安全、加解密速度最快的key类型，由于其数学特性，它的key的长度比rsa小很多，优先推荐使用。它目前唯一的问题就是兼容性，即在旧版本的ssh工具集中可能无法使用。不过据我目前测试，还没有发现此类问题 2. ed25519 生成密钥对 ssh-keygen -t ed25519 -C &amp;quot;your_email@example.com&amp;quot; -f ed25519file
+参数解释： -t： 指定使用的数字签名算法； -C: 注释，随便填； -f: 指定文件输出位置，可选默认为 ~/.ssh/ 3. 验证ssh密钥对 添加公钥：
+Gitee公钥管理页面 GitHub公钥管理页面 验证命令，前提条件: 已经添加了公钥
+1 2 ssh -T git@github.com # github ssh -T git@gitee.com # gitee 4. 总结 优先选择ed25519，否则选择rsa。 RSA算法通过使用不同的密钥进行加密和解密，实现了信息的保密性和完整性。它在实际应用中被广泛使用，但需要注意选择足够大的密钥长度以确保安全性。在安全性方面，RSA算法主要受到大整数分解问题的影响，随着量子计算技术的进步，RSA算法的安全性可能会受到威胁，因此一些新的算法如Ed25519等逐渐被引入以满足未来的安全需求。</description>
+    </item>
+    
+  </channel>
+</rss>

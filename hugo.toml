@@ -176,13 +176,9 @@ hasCJKLanguage = false
     # sponsor, maxum 3
     # 赞赏，最多支持3个
     [[menus.sponsor]]
-        name = "Wechat"
-        url = "/images/sponsor/Wechat.jpeg"
+        name = "微信支付"
+        url = "/images/wechatpay.png"
         weight = 1
-    [[menus.sponsor]]
-        name = "Alipay"
-        url = "/images/sponsor/Alipay.jpeg"
-        weight = 2
 
 # related configuration, see more: https://gohugo.io/content-management/related/
 # 相关文章的配置。详情请移步：https://gohugo.io/content-management/related/

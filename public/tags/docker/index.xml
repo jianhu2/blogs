@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on 老胡的星辰随笔</title>
+    <link>https://hujian.xyz/tags/docker/</link>
+    <description>Recent content in docker on 老胡的星辰随笔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 May 2023 16:19:04 +0800</lastBuildDate><atom:link href="https://hujian.xyz/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>kubernetes常用命令</title>
+      <link>https://hujian.xyz/posts/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Wed, 10 May 2023 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>1. 将service端口暴露到本地 比如将生产环境的redis暴露到本地6379端口
+1 kubectl port-forward service/redis -n [namesplace] 6379:6379 2. 进入容器中 kubectl exec -it [pod] -n [namesplace] -- bash 3. 查看日志 查看最后1行的日志
+kubectl logs -f --tail 1 [pod] -n [namesplace] 查看最后一分钟的所有日志
+kubectl -n [namesplace] logs [pod] --since=1m 查看指定时间
+kubectl -n -n [namesplace] logs -f [pod] --since-time=&amp;#34;2022-10-24T02:54:03.467+01:00&amp;#34; 4. 查看配置： kubectl get pod product-6b5c98478b-rpgr6 --namespace=product-prod -o yamlkubectl describe pods product-6b5c98478b-rpgr6 --namespace=product-prod 5.</description>
+    </item>
+    
+    <item>
+      <title>centos 7.9离线安装docker</title>
+      <link>https://hujian.xyz/posts/centos%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
+      <pubDate>Thu, 02 Mar 2023 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/centos%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
+      <description>centos 7.9安装docker 1.离线下载docker https://download.docker.com/linux/static/stable/x86_64/docker-20.10.9.tgz 2.离线安装docker 准备前：
+2.0.1 关闭Selinux 首先, 执行getenforce或sestatus, 查询selinux状态, CentOS系统安装后默认为enforcing.
+getenforce或sestatus 2.0.2 修改selinux配置 1 2 3 4 5 vim /etc/selinux/config 修改selinux配置文件 SELINUX=enforcing 修改为 SELINUX=disabled 2.0.3 重复服务器以上修改生效 1 reboot 2.1 移动文件到目标服务器并执行tar命令解压，如： tar -zxvf docker-20.10.9.tgz 2.2 将/home/docker目录下解压出来的所有docker文件复制到 /usr/bin/ 目录下 cp docker/* /usr/bin/ 2.3 将docker注册为service，进入/etc/systemd/system/目录,并创建docker.service文件 1 2 cd /etc/systemd/system/ touch docker.</description>
+    </item>
+    
+    <item>
+      <title>docker基础应用</title>
+      <link>https://hujian.xyz/posts/docker%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Tue, 02 Mar 2021 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/docker%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/</guid>
+      <description>1.指定docker数据存储路径 1.1 环境： centos 7.9 Docker version 20.10.10, build b485636 1.2 设置docker工作目录： 查看docker配置文件root目录 [root@localhost ~]# cat /usr/lib/systemd/system/docker.service |grep &amp;#34;ExecStart&amp;#34;ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock 停止正在运行的docker镜像以及docker服务 查看docker实际的数据存储目录，移动源(旧)数据到新的docker root目录： 1 2 3 docker info |grep &amp;#34;Docker Root Dir&amp;#34; systemctl stop docker.socket mv /var/lib/docker /data docker指定data存储位置 配置注意事项 1：以下内容中 &amp;ndash;insecure-registry=192.168.0.15 此处改为你自己服务器ip。 或者不填写也可以; 2：以下内容中 -graph /data/docker 是指定docker root路径 3：Docker version 23.</description>
+    </item>
+    
+  </channel>
+</rss>

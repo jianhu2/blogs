@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>k8s on 老胡的星辰随笔</title>
+    <link>https://hujian.xyz/tags/k8s/</link>
+    <description>Recent content in k8s on 老胡的星辰随笔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 May 2023 16:19:04 +0800</lastBuildDate><atom:link href="https://hujian.xyz/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>kubernetes常用命令</title>
+      <link>https://hujian.xyz/posts/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Wed, 10 May 2023 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>1. 将service端口暴露到本地 比如将生产环境的redis暴露到本地6379端口
+1 kubectl port-forward service/redis -n [namesplace] 6379:6379 2. 进入容器中 kubectl exec -it [pod] -n [namesplace] -- bash 3. 查看日志 查看最后1行的日志
+kubectl logs -f --tail 1 [pod] -n [namesplace] 查看最后一分钟的所有日志
+kubectl -n [namesplace] logs [pod] --since=1m 查看指定时间
+kubectl -n -n [namesplace] logs -f [pod] --since-time=&amp;#34;2022-10-24T02:54:03.467+01:00&amp;#34; 4. 查看配置： kubectl get pod product-6b5c98478b-rpgr6 --namespace=product-prod -o yamlkubectl describe pods product-6b5c98478b-rpgr6 --namespace=product-prod 5.</description>
+    </item>
+    
+  </channel>
+</rss>

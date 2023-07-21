@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on 老胡的星辰随笔</title>
+    <link>https://hujian.xyz/tags/linux/</link>
+    <description>Recent content in linux on 老胡的星辰随笔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Apr 2023 16:19:04 +0800</lastBuildDate><atom:link href="https://hujian.xyz/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ubuntu22.04安装gitlab</title>
+      <link>https://hujian.xyz/posts/ubuntu22.04%E5%AE%89%E8%A3%85gitlab/</link>
+      <pubDate>Fri, 28 Apr 2023 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/ubuntu22.04%E5%AE%89%E8%A3%85gitlab/</guid>
+      <description>1. gitlab安装前准备 系统版本：Ubuntu 22.04.1 LTS 1.1 更新系统环境 sudo apt updatesudo apt upgrade 1.2 安装和配置必须的依赖项 1 2 sudo apt-get install -y curl openssh-server ca-certificates tzdata perl sudo apt-get install curl 2.下载和安装gitlab 2.1 下载指定的版本 1 curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash 2.2 开始安装 注意：localhost为访问gitlab的地址，85为访问gitlab的端口号
+1 sudo EXTERNAL_URL=&amp;#34;http://localhost:85&amp;#34; apt-get install gitlab-ce=15.9.3-ce.0 除非您在安装过程中指定了自定义密码，否则将随机生成一个密码并存储在 /etc/gitlab/initial_root_password文件中(出于安全原因，24 小时后，此文件会被第一次 gitlab-ctl reconfigure 自动删除， 因此若使用随机密码登录，建议安装成功初始登录成功之后，立即修改初始密码）。使用此密码和用户名 root 登录。</description>
+    </item>
+    
+    <item>
+      <title>centos 7.9离线安装docker</title>
+      <link>https://hujian.xyz/posts/centos%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
+      <pubDate>Thu, 02 Mar 2023 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/centos%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
+      <description>centos 7.9安装docker 1.离线下载docker https://download.docker.com/linux/static/stable/x86_64/docker-20.10.9.tgz 2.离线安装docker 准备前：
+2.0.1 关闭Selinux 首先, 执行getenforce或sestatus, 查询selinux状态, CentOS系统安装后默认为enforcing.
+getenforce或sestatus 2.0.2 修改selinux配置 1 2 3 4 5 vim /etc/selinux/config 修改selinux配置文件 SELINUX=enforcing 修改为 SELINUX=disabled 2.0.3 重复服务器以上修改生效 1 reboot 2.1 移动文件到目标服务器并执行tar命令解压，如： tar -zxvf docker-20.10.9.tgz 2.2 将/home/docker目录下解压出来的所有docker文件复制到 /usr/bin/ 目录下 cp docker/* /usr/bin/ 2.3 将docker注册为service，进入/etc/systemd/system/目录,并创建docker.service文件 1 2 cd /etc/systemd/system/ touch docker.</description>
+    </item>
+    
+    <item>
+      <title>centos7.7手动挂载磁盘分区</title>
+      <link>https://hujian.xyz/posts/centos7.7%E6%89%8B%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/</link>
+      <pubDate>Mon, 27 Feb 2023 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/centos7.7%E6%89%8B%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/</guid>
+      <description>1. centos挂载磁盘分区 1.1 系统环境 aliyun CentOS Linux release 7.7.1908 (Core) 1.2 目的： 磁盘扩容到256G，主分区(/dev/vda1)使用100G; 剩156G可扩容 1.3 限制条件： 主分区(/dev/vda1)系统盘使用的是ID 83数据卷分区，主分区(/dev/vda1)默认不是lvm，不能实现无缝扩容， 考虑到生产商用环境数据量大，操作风险大，这里用可分配的156G新建分区挂载到系统磁盘/data目录,而不是在主分区上直接扩容 2. 磁盘分区 2.1 查询磁盘大小 1 2 3 4 5 # lsblk -l NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT vda 253:0 0 256G 0 disk vda1 253:1 0 100G 0 part / vda2 253:2 0 156G 0 part 2.</description>
+    </item>
+    
+    <item>
+      <title>windows安装ubuntu22.04</title>
+      <link>https://hujian.xyz/posts/windows%E5%AE%89%E8%A3%85ubuntu22.04/</link>
+      <pubDate>Fri, 10 Feb 2023 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/windows%E5%AE%89%E8%A3%85ubuntu22.04/</guid>
+      <description>1.安装前准备 U盘&amp;gt;=8G，干净的U盘，因为在安装过程中会清除U盘数据; Windows 7 或更高版本 (32/64 位均可)。 U盘安装引导依赖2选1,建议选Rufus： U盘引导安装依赖uboot - https://github.com/balena-io/etcher/releases/download/v1.18.4/balenaEtcher-Setup-1.18.4.exe U盘引导依赖-Rufus 下载ubuntu镜像选择对应的系统架构版本，建议选择官方，如果下载速度慢则选择aliyun：
+官方下载ubuntu22.04桌面版本 阿里云镜像源ubuntu22.04桌面版本 ubuntu-arm架构镜像源 2.U盘制作安装引导 将下载好的rufus和ubuntu22.04镜像放到U盘中 执行rufus二进制文件，按步骤执行： 选择对应的U盘位置 选择ubuntu镜像文件并选择打开 选择START执行写入U盘，可能需要额外的资源来写入ISO，弹窗选择yes；在执行中可能遇到一些警告说会清空U盘，选择OK; 安装引导过程总共需要约10分钟,安装完成后状态栏为READY，此时选择CLOSE,安装完成; 3. 安装ubuntu U盘制作好安装引导后在目标机器上执行：
+重启电脑，在启动过程中按F12或者F10或者F2(根据电脑品牌选择不同)进入boot菜单，在菜单中选择USB boot菜单中选择语言，continue进入下一步 安装ubuntu步骤：选择normal installation；如果电脑给的配置很低，就选择minimal installation； 配置安装：install type配置来选择是否将ubuntu作为您唯一的操作系统(此选择会删除windows系统并清除磁盘);如果当前有windows系统则可以选择双系统共同安装; 存储卷LVM选择安全加密，并设置密码 用于恢复数据;密码记录下来保存在其它地方; 创建你的登录账号密码和计算机名字，continue继续 等待进度条，100%完成安装，并选择重启 参考链接 Install Ubuntu desktop bootable引导 </description>
+    </item>
+    
+    <item>
+      <title>centos7.9扩展磁盘</title>
+      <link>https://hujian.xyz/posts/centos7.9%E6%89%A9%E5%B1%95%E7%A3%81%E7%9B%98/</link>
+      <pubDate>Mon, 02 Jan 2023 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/centos7.9%E6%89%A9%E5%B1%95%E7%A3%81%E7%9B%98/</guid>
+      <description>1. centos 扩展磁盘分区 1.1 系统环境1 vmware centos 7.9 2.扩展步骤 2.1 步骤一 关机状态下在设置-&amp;gt;硬盘-&amp;gt;扩展-&amp;gt;选择硬盘大小; 我这里选择扩展到50G
+2.2 步骤二 进入系统内部执行命令扩展磁盘大小，主要是创建逻辑卷(PVC)/物理卷(PV),从逻辑卷(LV)映射到物理卷(PV): 1 2 3 4 5 6 7 8 9 10 11 12 13 df -mh lsblk -l // 查询系统磁盘挂载目录 fdisk -l pvcreate /dev/sda3 vgextend centos /dev/sda3 vgs // 返回卷组的属性 pvdisplay // 查看物理卷 vgdisplay // 查看逻辑卷 lvdisplay // 查看逻辑卷状态 lvextend -L +50G /dev/test_vg/test_lv // 分配指定大小 lvextend -l +100%FREE /dev/centos/root // 分配100的剩余空间 xfs_growfs /dev/mapper/centos-root // 刷新根分区生效 df -mh // 查询磁盘 系统重启更新重新挂载磁盘卷 1 2 3 lvdisplay // 查看逻辑卷状态 vgchange -a y test_vg // 重新激活逻辑卷组 mount /dev/test_vg/test_lv /data // 重新挂载逻辑卷到指定目录 2.</description>
+    </item>
+    
+    <item>
+      <title>ubuntu宿主机部署ss-local客户端</title>
+      <link>https://hujian.xyz/posts/ubuntu%E5%AE%BF%E4%B8%BB%E6%9C%BA%E9%83%A8%E7%BD%B2ss-local%E5%AE%A2%E6%88%B7%E7%AB%AF/</link>
+      <pubDate>Wed, 10 Aug 2022 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/ubuntu%E5%AE%BF%E4%B8%BB%E6%9C%BA%E9%83%A8%E7%BD%B2ss-local%E5%AE%A2%E6%88%B7%E7%AB%AF/</guid>
+      <description>shadowsocks-libev基于ubuntu宿主机部署ss-local客户端.md 1. 安装 1.1 准备环境： Linux ubuntu 6.2.0-20-generic ubuntu 2023-04 amd64 基于ubuntu宿主机安装 shadowsocks-libev和v2ray-plugin 1.2 安装shadowsocks-libev： sudo apt install shadowsocks-libev1.3 安装v2ray-plugin 1 2 3 4 wget https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.2/v2ray-plugin-linux-amd64-v1.3.2.tar.gz tar -zxvf v2ray-plugin-linux-amd64-v1.3.2.tar.gz mv v2ray-plugin_linux_amd64 /usr/bin/v2ray-plugin chmod 775 /usr/bin/v2ray-plugin 1.3 配置shadowsocks-libev配置文件 vi /etc/shadowsocks-libev/config.json{&amp;#34;server&amp;#34;: &amp;#34;domain.com&amp;#34;,&amp;#34;server_port&amp;#34;: 443,&amp;#34;password&amp;#34;: &amp;#34;password&amp;#34;,&amp;#34;method&amp;#34;: &amp;#34;aes-128-gcm&amp;#34;,&amp;#34;local_address&amp;#34;: &amp;#34;0.</description>
+    </item>
+    
+    <item>
+      <title>navicat 15注册码</title>
+      <link>https://hujian.xyz/posts/naivcat%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 19 May 2022 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/naivcat%E5%AE%89%E8%A3%85/</guid>
+      <description>注册码： NAVH-WK6A-DMVK-DKW3</description>
+    </item>
+    
+    <item>
+      <title>基于ssh隧道转发端口</title>
+      <link>https://hujian.xyz/posts/port-forward/</link>
+      <pubDate>Tue, 10 May 2022 16:19:04 +0800</pubDate>
+      
+      <guid>https://hujian.xyz/posts/port-forward/</guid>
+      <description>ssh端口转发(ssh port-forward) SSH 除了登录服务器，还有一大用途，就是作为加密通信的中介，充当两台服务器之间的通信加密跳板，使得原本不加密的通信变成加密通信。这个功能称为端口转发（port forwarding），又称 SSH 隧道（tunnel）。 端口转发有两个主要作用：
+将不加密的数据放在 SSH 安全连接里面传输，使得原本不安全的网络服务增加了安全性，比如通过端口转发访问 Telnet、FTP 等明文服务，数据传输就都会加密。
+作为数据通信的加密跳板，绕过网络防火墙。
+端口转发有三种使用方法：本地转发，远程转发，动态转发。 因为常用到了前两种转发，这里只介绍前两种转发。
+1. 本地转发 本地转发(local forwarding)指的是，将目标服务器的端口(target-host:target-port) 转发跳板机(tunnel-host) 映射到本地端口(local-port); 然后访问本地的端口(local-port)就可以通过跳板机(tunnel-host)转发到目标服务器的端口(target-host:target-port);
+sh -L local-port:target-host:target-port tunnel-host 示例：
+转发redis到本地16379 ssh -L 16379:127.0.0.1:6379 dev.hujian.xyz -N 2. 远程转发 远程转发指的是在远程 SSH 服务器建立的转发规则。 它跟本地转发正好反过来。建立本地计算机到远程计算机的 SSH 隧道以后，本地转发是通过本地计算机访问远程计算机，而远程转发则是通过远程计算机访问本地计算机。它的命令格式如下。
+ssh -R remote-port:target-host:target-port -N remotehost
+示例：
+远程计算机通过curl http://my.public.server:8080 访问本地的80 web服务 ssh -R 8080:localhost:80 -N my.</description>
+    </item>
+    
+  </channel>
+</rss>
