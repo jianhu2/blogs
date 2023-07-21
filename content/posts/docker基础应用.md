@@ -1,24 +1,18 @@
 ---
 title: "docker基础应用"
 subtitle: ""
-date: 2022-05-01T16:19:04+08:00
+date: 2021-03-02T16:19:04+08:00
 lastmod: "2023-06-21"
 draft: false
 description: "指定docker数据存储路径，常用的docker命令"
 image: "/images/docker-logo.png"
 tags: ["docker"]
-categories: ["docker"]
-series: ["docker"]
 hideFromHomePage: false
 ---
 
+
+
 # 1.指定docker数据存储路径
-
-这是博客文章的摘要，将在主页或博客列表中显示。
-
-<!--more-->
-
-
 ## 1.1 环境：
    - centos 7.9
    - Docker version 20.10.10, build b485636
@@ -118,7 +112,45 @@ docker cp iotsquare.toml iotsquare:/home
 docker save -o test.tar registry.cn-shenzhen.aliyuncs.com/{{name}}/{object}:{version}
 
 ## 2.11 docker 加载镜像
-docker load --input test.tar
+
+## 2.12. **创建和运行容器**：
+    - `docker run`：运行一个新的容器。
+    - `docker start`：启动一个已停止的容器。
+    - `docker stop`：停止一个运行中的容器。
+    - `docker restart`：重启一个容器。
+    - `docker exec`：在正在运行的容器中执行命令。
+
+## 2.13 **管理容器**：
+    - `docker ps`：列出正在运行的容器。
+    - `docker ps -a`：列出所有容器，包括已停止的。
+    - `docker rm`：删除一个或多个容器。
+
+## 2.14. **管理镜像**：
+    - `docker images`：列出本地镜像。
+    - `docker pull`：从 Docker Hub 下载镜像。
+    - `docker build`：构建一个镜像。
+    - `docker rmi`：删除一个或多个本地镜像。
+
+## 2.15. **容器和主机之间的拷贝**：
+    - `docker cp`：在容器和主机之间拷贝文件。
+
+## 2.16. **管理网络**：
+    - `docker network ls`：列出所有网络。
+    - `docker network create`：创建一个新的网络。
+    - `docker network rm`：删除一个网络。
+
+## 2.17. **管理数据卷**：
+    - `docker volume ls`：列出所有数据卷。
+    - `docker volume create`：创建一个新的数据卷。
+    - `docker volume rm`：删除一个数据卷。
+
+## 2.18. **查找容器和镜像**：
+    - `docker search`：在 Docker Hub 上搜索镜像。
+
+## 2.19. **暂停和恢复容器**：
+    - `docker pause`：暂停一个运行中的容器。
+    - `docker unpause`：恢复一个暂停的容器。
+
 
 # 3. [docker镜像库](https://hub.docker.com/)
 To use the access token from your Docker CLI client:

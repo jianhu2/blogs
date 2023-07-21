@@ -1,3 +1,13 @@
+---
+title: "ubuntu22.04安装gitlab"
+subtitle: ""
+date: 2023-04-28T16:19:04+08:00
+lastmod: "2023-4-28"
+draft: false
+tags: ["linux"]
+hideFromHomePage: false
+---
+
 # 1. gitlab安装前准备
  - 系统版本：Ubuntu 22.04.1 LTS
 

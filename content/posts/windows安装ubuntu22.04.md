@@ -1,3 +1,13 @@
+---
+title: "windows安装ubuntu22.04"
+subtitle: ""
+date: 2023-02-10T16:19:04+08:00
+lastmod: "2023-03-18"
+draft: false
+tags: ["linux"]
+hideFromHomePage: false
+---
+
 # 1.安装前准备
  - U盘>=8G，干净的U盘，因为在安装过程中会清除U盘数据;
  - Windows 7 或更高版本 (32/64 位均可)。

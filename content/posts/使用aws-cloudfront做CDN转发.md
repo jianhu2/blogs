@@ -1,3 +1,13 @@
+---
+title: "使用aws-cloudfront做CDN转发"
+subtitle: ""
+date: 2023-03-20T16:19:04+08:00
+lastmod: "2023-03-21"
+draft: false
+tags: ["website"]
+hideFromHomePage: false
+---
+
 # CND转发到v2ray服务
 环境:
  - 域名一个
