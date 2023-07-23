@@ -80,7 +80,7 @@ external_url 'http://服务器ip地址:端口'
 
 
 ### 2.4.2 关闭GitLab新用户注册功能
-![管不注册](../img/gitlab关闭注册.png)
+![关闭注册](/images/gitlab关闭注册.png)
 
 
 

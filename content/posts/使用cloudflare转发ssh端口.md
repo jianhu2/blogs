@@ -14,7 +14,7 @@ cloudflare 提供的免费加密通道，通过 cloudflare 的 cnd 访问部署�
 相比于 frp 省去了服务器的成本。
 
 
-![架构图.png](../img/cloudflare-tunnel.jpg)
+![架构图.png](/images/cloudflare-tunnel.jpg)
 
 # 1.准备
 ## 1.1 先决条件

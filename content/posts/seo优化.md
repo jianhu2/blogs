@@ -43,7 +43,7 @@ hideFromHomePage: false
     - [google站长](https://search.google.com/search-console)
 3. 通过模拟器分析网站关键字收录情况  
    - [蜘蛛模拟-Screaming Frog SEO Spider](https://www.screamingfrog.co.uk/seo-spider/)
-   - ![蜘蛛模拟抓取关键字](../img/蜘蛛模拟抓取-1.png)
+   - ![蜘蛛模拟抓取关键字](/images/蜘蛛模拟抓取-1.png)
    
    
 # 3 参考

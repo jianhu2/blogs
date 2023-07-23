@@ -1,5 +1,5 @@
 ---
-title: "goland IED追新"
+title: "goland IDE追新"
 subtitle: ""
 date: 2023-07-21T16:19:04+08:00
 lastmod: "2023-07-23"
