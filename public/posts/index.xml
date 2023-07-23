@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 老胡的星辰随笔</title>
-    <link>https://hujian.xyz/posts/</link>
+    <link>https://jianhu2.github.io/posts/</link>
     <description>Recent content in Posts on 老胡的星辰随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 May 2023 16:19:04 +0800</lastBuildDate><atom:link href="https://hujian.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 May 2023 16:19:04 +0800</lastBuildDate><atom:link href="https://jianhu2.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>kubernetes常用命令</title>
-      <link>https://hujian.xyz/posts/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <link>https://jianhu2.github.io/posts/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 10 May 2023 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <guid>https://jianhu2.github.io/posts/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>1. 将service端口暴露到本地 比如将生产环境的redis暴露到本地6379端口
 1 kubectl port-forward service/redis -n [namesplace] 6379:6379 2. 进入容器中 kubectl exec -it [pod] -n [namesplace] -- bash 3. 查看日志 查看最后1行的日志
 kubectl logs -f --tail 1 [pod] -n [namesplace] 查看最后一分钟的所有日志
@@ -22,30 +22,30 @@ kubectl -n -n [namesplace] logs -f [pod] --since-time=&amp;#34;2022-10-24T02:54:
     
     <item>
       <title>ubuntu22.04安装gitlab</title>
-      <link>https://hujian.xyz/posts/ubuntu22.04%E5%AE%89%E8%A3%85gitlab/</link>
+      <link>https://jianhu2.github.io/posts/ubuntu22.04%E5%AE%89%E8%A3%85gitlab/</link>
       <pubDate>Fri, 28 Apr 2023 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/ubuntu22.04%E5%AE%89%E8%A3%85gitlab/</guid>
+      <guid>https://jianhu2.github.io/posts/ubuntu22.04%E5%AE%89%E8%A3%85gitlab/</guid>
       <description>1. gitlab安装前准备 系统版本：Ubuntu 22.04.1 LTS 1.1 更新系统环境 sudo apt updatesudo apt upgrade 1.2 安装和配置必须的依赖项 1 2 sudo apt-get install -y curl openssh-server ca-certificates tzdata perl sudo apt-get install curl 2.下载和安装gitlab 2.1 下载指定的版本 1 curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash 2.2 开始安装 注意：localhost为访问gitlab的地址，85为访问gitlab的端口号
 1 sudo EXTERNAL_URL=&amp;#34;http://localhost:85&amp;#34; apt-get install gitlab-ce=15.9.3-ce.0 除非您在安装过程中指定了自定义密码，否则将随机生成一个密码并存储在 /etc/gitlab/initial_root_password文件中(出于安全原因，24 小时后，此文件会被第一次 gitlab-ctl reconfigure 自动删除， 因此若使用随机密码登录，建议安装成功初始登录成功之后，立即修改初始密码）。使用此密码和用户名 root 登录。</description>
     </item>
     
     <item>
       <title>使用aws-cloudfront做CDN转发</title>
-      <link>https://hujian.xyz/posts/%E4%BD%BF%E7%94%A8aws-cloudfront%E5%81%9Acdn%E8%BD%AC%E5%8F%91/</link>
+      <link>https://jianhu2.github.io/posts/%E4%BD%BF%E7%94%A8aws-cloudfront%E5%81%9Acdn%E8%BD%AC%E5%8F%91/</link>
       <pubDate>Mon, 20 Mar 2023 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/%E4%BD%BF%E7%94%A8aws-cloudfront%E5%81%9Acdn%E8%BD%AC%E5%8F%91/</guid>
+      <guid>https://jianhu2.github.io/posts/%E4%BD%BF%E7%94%A8aws-cloudfront%E5%81%9Acdn%E8%BD%AC%E5%8F%91/</guid>
       <description>CND转发到v2ray服务 环境:
 域名一个 aws cloudfront服务 数据转发流程 A.example.com-&amp;gt;cloudfront-&amp;gt;B.example.com-&amp;gt;ip.ec2.port 注意事项 踩过的坑： v2ray-plugin报错 http: TLS handshake error from 64.252.173.97:23912: read tcp 172.21.0.3:443-&amp;gt;64.252.173.97:23912: read: connection reset by peer 原因为2层(EC2,cloudfront)TLS证书不一致; 第一个想法就是将两个证书整成一致，然后cloudfront就上传&amp;quot;Let&amp;rsquo;s Encrypt自签的证书，发现使用自上传的证书cloudfront根本不转发数据了;得出一个结论:cloudfront必须使用它请求生成的tls证书； 解决方案：A.example.com-&amp;gt;cloudfront-&amp;gt;ip.ec2.port转发流程修改为A.example.com-&amp;gt;cloudfront-&amp;gt;B.example.com-&amp;gt;ip.ec2.port v2ray-plugin报错not found in &#39;Sec-Websocket-Version&#39; header 1 cloudfront ws一直是v2ray.com/core/transport/internet/websocket: failed to convert to WebSocket connection &amp;gt; websocket: unsupported version: 13 not found in &amp;#39;Sec-Websocket-Version&amp;#39; header 原因是cloudfront没有配置转发HTTP请求头,CloudFront 预设并不会转发所有的 HTTP request headers， 有些 request headers 在经过 CloudFront 之后就被丟掉了导致 v2ray 无法识别到必要的数据。 需要更改 origin request policies 為 Managed-AllViewer，這樣它才會轉發所有的 headers。 - 解决方案：cloudfront设置源请求策略为```Managed-AllViewer```cloudfront转发数据到源失败，解决方法是需要更改行为策略-&amp;gt;缓存策略名称(Managed-CachingDisabled)-&amp;gt;源请求策略名称(Managed-AllViewerExceptHostHeader) 源服务器没有接收到数据,错误的提示： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 root@localhost ~ # curl -v https://proxy.</description>
     </item>
     
     <item>
       <title>centos 7.9离线安装docker</title>
-      <link>https://hujian.xyz/posts/centos%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
+      <link>https://jianhu2.github.io/posts/centos%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
       <pubDate>Thu, 02 Mar 2023 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/centos%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
+      <guid>https://jianhu2.github.io/posts/centos%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
       <description>centos 7.9安装docker 1.离线下载docker https://download.docker.com/linux/static/stable/x86_64/docker-20.10.9.tgz 2.离线安装docker 准备前：
 2.0.1 关闭Selinux 首先, 执行getenforce或sestatus, 查询selinux状态, CentOS系统安装后默认为enforcing.
 getenforce或sestatus 2.0.2 修改selinux配置 1 2 3 4 5 vim /etc/selinux/config 修改selinux配置文件 SELINUX=enforcing 修改为 SELINUX=disabled 2.0.3 重复服务器以上修改生效 1 reboot 2.1 移动文件到目标服务器并执行tar命令解压，如： tar -zxvf docker-20.10.9.tgz 2.2 将/home/docker目录下解压出来的所有docker文件复制到 /usr/bin/ 目录下 cp docker/* /usr/bin/ 2.3 将docker注册为service，进入/etc/systemd/system/目录,并创建docker.service文件 1 2 cd /etc/systemd/system/ touch docker.</description>
@@ -53,19 +53,19 @@ getenforce或sestatus 2.0.2 修改selinux配置 1 2 3 4 5 vim /etc/selinux/con
     
     <item>
       <title>centos7.7手动挂载磁盘分区</title>
-      <link>https://hujian.xyz/posts/centos7.7%E6%89%8B%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/</link>
+      <link>https://jianhu2.github.io/posts/centos7.7%E6%89%8B%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/</link>
       <pubDate>Mon, 27 Feb 2023 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/centos7.7%E6%89%8B%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/</guid>
+      <guid>https://jianhu2.github.io/posts/centos7.7%E6%89%8B%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/</guid>
       <description>1. centos挂载磁盘分区 1.1 系统环境 aliyun CentOS Linux release 7.7.1908 (Core) 1.2 目的： 磁盘扩容到256G，主分区(/dev/vda1)使用100G; 剩156G可扩容 1.3 限制条件： 主分区(/dev/vda1)系统盘使用的是ID 83数据卷分区，主分区(/dev/vda1)默认不是lvm，不能实现无缝扩容， 考虑到生产商用环境数据量大，操作风险大，这里用可分配的156G新建分区挂载到系统磁盘/data目录,而不是在主分区上直接扩容 2. 磁盘分区 2.1 查询磁盘大小 1 2 3 4 5 # lsblk -l NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT vda 253:0 0 256G 0 disk vda1 253:1 0 100G 0 part / vda2 253:2 0 156G 0 part 2.</description>
     </item>
     
     <item>
       <title>windows安装ubuntu22.04</title>
-      <link>https://hujian.xyz/posts/windows%E5%AE%89%E8%A3%85ubuntu22.04/</link>
+      <link>https://jianhu2.github.io/posts/windows%E5%AE%89%E8%A3%85ubuntu22.04/</link>
       <pubDate>Fri, 10 Feb 2023 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/windows%E5%AE%89%E8%A3%85ubuntu22.04/</guid>
+      <guid>https://jianhu2.github.io/posts/windows%E5%AE%89%E8%A3%85ubuntu22.04/</guid>
       <description>1.安装前准备 U盘&amp;gt;=8G，干净的U盘，因为在安装过程中会清除U盘数据; Windows 7 或更高版本 (32/64 位均可)。 U盘安装引导依赖2选1,建议选Rufus： U盘引导安装依赖uboot - https://github.com/balena-io/etcher/releases/download/v1.18.4/balenaEtcher-Setup-1.18.4.exe U盘引导依赖-Rufus 下载ubuntu镜像选择对应的系统架构版本，建议选择官方，如果下载速度慢则选择aliyun：
 官方下载ubuntu22.04桌面版本 阿里云镜像源ubuntu22.04桌面版本 ubuntu-arm架构镜像源 2.U盘制作安装引导 将下载好的rufus和ubuntu22.04镜像放到U盘中 执行rufus二进制文件，按步骤执行： 选择对应的U盘位置 选择ubuntu镜像文件并选择打开 选择START执行写入U盘，可能需要额外的资源来写入ISO，弹窗选择yes；在执行中可能遇到一些警告说会清空U盘，选择OK; 安装引导过程总共需要约10分钟,安装完成后状态栏为READY，此时选择CLOSE,安装完成; 3. 安装ubuntu U盘制作好安装引导后在目标机器上执行：
 重启电脑，在启动过程中按F12或者F10或者F2(根据电脑品牌选择不同)进入boot菜单，在菜单中选择USB boot菜单中选择语言，continue进入下一步 安装ubuntu步骤：选择normal installation；如果电脑给的配置很低，就选择minimal installation； 配置安装：install type配置来选择是否将ubuntu作为您唯一的操作系统(此选择会删除windows系统并清除磁盘);如果当前有windows系统则可以选择双系统共同安装; 存储卷LVM选择安全加密，并设置密码 用于恢复数据;密码记录下来保存在其它地方; 创建你的登录账号密码和计算机名字，continue继续 等待进度条，100%完成安装，并选择重启 参考链接 Install Ubuntu desktop bootable引导 </description>
@@ -73,29 +73,29 @@ getenforce或sestatus 2.0.2 修改selinux配置 1 2 3 4 5 vim /etc/selinux/con
     
     <item>
       <title>centos7.9扩展磁盘</title>
-      <link>https://hujian.xyz/posts/centos7.9%E6%89%A9%E5%B1%95%E7%A3%81%E7%9B%98/</link>
+      <link>https://jianhu2.github.io/posts/centos7.9%E6%89%A9%E5%B1%95%E7%A3%81%E7%9B%98/</link>
       <pubDate>Mon, 02 Jan 2023 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/centos7.9%E6%89%A9%E5%B1%95%E7%A3%81%E7%9B%98/</guid>
+      <guid>https://jianhu2.github.io/posts/centos7.9%E6%89%A9%E5%B1%95%E7%A3%81%E7%9B%98/</guid>
       <description>1. centos 扩展磁盘分区 1.1 系统环境1 vmware centos 7.9 2.扩展步骤 2.1 步骤一 关机状态下在设置-&amp;gt;硬盘-&amp;gt;扩展-&amp;gt;选择硬盘大小; 我这里选择扩展到50G
 2.2 步骤二 进入系统内部执行命令扩展磁盘大小，主要是创建逻辑卷(PVC)/物理卷(PV),从逻辑卷(LV)映射到物理卷(PV): 1 2 3 4 5 6 7 8 9 10 11 12 13 df -mh lsblk -l // 查询系统磁盘挂载目录 fdisk -l pvcreate /dev/sda3 vgextend centos /dev/sda3 vgs // 返回卷组的属性 pvdisplay // 查看物理卷 vgdisplay // 查看逻辑卷 lvdisplay // 查看逻辑卷状态 lvextend -L +50G /dev/test_vg/test_lv // 分配指定大小 lvextend -l +100%FREE /dev/centos/root // 分配100的剩余空间 xfs_growfs /dev/mapper/centos-root // 刷新根分区生效 df -mh // 查询磁盘 系统重启更新重新挂载磁盘卷 1 2 3 lvdisplay // 查看逻辑卷状态 vgchange -a y test_vg // 重新激活逻辑卷组 mount /dev/test_vg/test_lv /data // 重新挂载逻辑卷到指定目录 2.</description>
     </item>
     
     <item>
       <title>ubuntu宿主机部署ss-local客户端</title>
-      <link>https://hujian.xyz/posts/ubuntu%E5%AE%BF%E4%B8%BB%E6%9C%BA%E9%83%A8%E7%BD%B2ss-local%E5%AE%A2%E6%88%B7%E7%AB%AF/</link>
+      <link>https://jianhu2.github.io/posts/ubuntu%E5%AE%BF%E4%B8%BB%E6%9C%BA%E9%83%A8%E7%BD%B2ss-local%E5%AE%A2%E6%88%B7%E7%AB%AF/</link>
       <pubDate>Wed, 10 Aug 2022 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/ubuntu%E5%AE%BF%E4%B8%BB%E6%9C%BA%E9%83%A8%E7%BD%B2ss-local%E5%AE%A2%E6%88%B7%E7%AB%AF/</guid>
+      <guid>https://jianhu2.github.io/posts/ubuntu%E5%AE%BF%E4%B8%BB%E6%9C%BA%E9%83%A8%E7%BD%B2ss-local%E5%AE%A2%E6%88%B7%E7%AB%AF/</guid>
       <description>shadowsocks-libev基于ubuntu宿主机部署ss-local客户端.md 1. 安装 1.1 准备环境： Linux ubuntu 6.2.0-20-generic ubuntu 2023-04 amd64 基于ubuntu宿主机安装 shadowsocks-libev和v2ray-plugin 1.2 安装shadowsocks-libev： sudo apt install shadowsocks-libev1.3 安装v2ray-plugin 1 2 3 4 wget https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.2/v2ray-plugin-linux-amd64-v1.3.2.tar.gz tar -zxvf v2ray-plugin-linux-amd64-v1.3.2.tar.gz mv v2ray-plugin_linux_amd64 /usr/bin/v2ray-plugin chmod 775 /usr/bin/v2ray-plugin 1.3 配置shadowsocks-libev配置文件 vi /etc/shadowsocks-libev/config.json{&amp;#34;server&amp;#34;: &amp;#34;domain.com&amp;#34;,&amp;#34;server_port&amp;#34;: 443,&amp;#34;password&amp;#34;: &amp;#34;password&amp;#34;,&amp;#34;method&amp;#34;: &amp;#34;aes-128-gcm&amp;#34;,&amp;#34;local_address&amp;#34;: &amp;#34;0.</description>
     </item>
     
     <item>
       <title>使用cloudflare转发ssh端口</title>
-      <link>https://hujian.xyz/posts/%E4%BD%BF%E7%94%A8cloudflare%E8%BD%AC%E5%8F%91ssh%E7%AB%AF%E5%8F%A3/</link>
+      <link>https://jianhu2.github.io/posts/%E4%BD%BF%E7%94%A8cloudflare%E8%BD%AC%E5%8F%91ssh%E7%AB%AF%E5%8F%A3/</link>
       <pubDate>Thu, 21 Jul 2022 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/%E4%BD%BF%E7%94%A8cloudflare%E8%BD%AC%E5%8F%91ssh%E7%AB%AF%E5%8F%A3/</guid>
+      <guid>https://jianhu2.github.io/posts/%E4%BD%BF%E7%94%A8cloudflare%E8%BD%AC%E5%8F%91ssh%E7%AB%AF%E5%8F%A3/</guid>
       <description>Cloudflare Tunnel cloudflare 提供的免费加密通道，通过 cloudflare 的 cnd 访问部署在内网的服务，比如 web,ssh,smb,tcp 等。 其工作方式类似于 frp，可以将本地服务发布到公网。只不过 frp 所需的服务器 IP 在 Cloudflare Tunnel 中变成了 Cloudflare 提供的节点。 相比于 frp 省去了服务器的成本。
 1.准备 1.1 先决条件 必须需要一个 cloudflare 账号，以及开通 cloudflare zero trust。 cloudflare：https://www.cloudflare.com/ zero trust: https://one.dash.cloudflare.com/ 在你的需要内网穿透的设备上安装 cloudflared（cf 的本地 cli 客户端）
 ubuntu/centos amd64架构 curl -L &#39;https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64&#39; -o /usr/bin/cloudflared &amp;amp;&amp;amp; chmod +x /usr/bin/cloudflared arm64 curl -L &#39;https://github.</description>
@@ -103,29 +103,29 @@ ubuntu/centos amd64架构 curl -L &#39;https://github.com/cloudflare/cloudflared
     
     <item>
       <title>cn博客添加音乐组件</title>
-      <link>https://hujian.xyz/posts/%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E5%A4%96%E9%93%BE/</link>
+      <link>https://jianhu2.github.io/posts/%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E5%A4%96%E9%93%BE/</link>
       <pubDate>Sat, 21 May 2022 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E5%A4%96%E9%93%BE/</guid>
+      <guid>https://jianhu2.github.io/posts/%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E5%A4%96%E9%93%BE/</guid>
       <description>1. 博客底部添加音乐组件 音乐效果
 1.1 直接上代码示例 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 &amp;lt;!-- 为博客底部添加音乐组件 --&amp;gt; &amp;lt;div id=&amp;#34;player&amp;#34; class=&amp;#34;aplayer&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;link href=&amp;#34;https://files.cnblogs.com/files/shwee/APlayer.min_v1.10.1.css&amp;#34; rel=&amp;#34;stylesheet&amp;#34;&amp;gt; &amp;lt;script src=&amp;#34;https://files.</description>
     </item>
     
     <item>
       <title>navicat 15注册码</title>
-      <link>https://hujian.xyz/posts/naivcat%E5%AE%89%E8%A3%85/</link>
+      <link>https://jianhu2.github.io/posts/naivcat%E5%AE%89%E8%A3%85/</link>
       <pubDate>Thu, 19 May 2022 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/naivcat%E5%AE%89%E8%A3%85/</guid>
+      <guid>https://jianhu2.github.io/posts/naivcat%E5%AE%89%E8%A3%85/</guid>
       <description>注册码： NAVH-WK6A-DMVK-DKW3</description>
     </item>
     
     <item>
       <title>基于ssh隧道转发端口</title>
-      <link>https://hujian.xyz/posts/port-forward/</link>
+      <link>https://jianhu2.github.io/posts/port-forward/</link>
       <pubDate>Tue, 10 May 2022 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/port-forward/</guid>
+      <guid>https://jianhu2.github.io/posts/port-forward/</guid>
       <description>ssh端口转发(ssh port-forward) SSH 除了登录服务器，还有一大用途，就是作为加密通信的中介，充当两台服务器之间的通信加密跳板，使得原本不加密的通信变成加密通信。这个功能称为端口转发（port forwarding），又称 SSH 隧道（tunnel）。 端口转发有两个主要作用：
 将不加密的数据放在 SSH 安全连接里面传输，使得原本不安全的网络服务增加了安全性，比如通过端口转发访问 Telnet、FTP 等明文服务，数据传输就都会加密。
 作为数据通信的加密跳板，绕过网络防火墙。
@@ -140,10 +140,10 @@ ssh -R remote-port:target-host:target-port -N remotehost
     
     <item>
       <title>生成HTTPS证书</title>
-      <link>https://hujian.xyz/posts/%E7%94%9F%E6%88%90https%E8%AF%81%E4%B9%A6/</link>
+      <link>https://jianhu2.github.io/posts/%E7%94%9F%E6%88%90https%E8%AF%81%E4%B9%A6/</link>
       <pubDate>Mon, 21 Mar 2022 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/%E7%94%9F%E6%88%90https%E8%AF%81%E4%B9%A6/</guid>
+      <guid>https://jianhu2.github.io/posts/%E7%94%9F%E6%88%90https%E8%AF%81%E4%B9%A6/</guid>
       <description>生成HTTPS证书 1. 使用loge命令的方式生成HTTPS证书 参数说明：
 *.domain.com 替换为你的域名，支持所有子域名 &amp;ndash; dns 是指域名在哪个云厂商，支持的云厂商有alidns/cloudflare aws;详细参考github官方文档 CLOUDFLARE_EMAIL=&amp;#34;xx@gmail.com&amp;#34; \CLOUDFLARE_API_KEY=&amp;#34;xxx&amp;#34; \lego --email &amp;#34;xx@gmail.com&amp;#34; --dns cloudflare --domains &amp;#34;*.domain.com&amp;#34; run 2 使用certbot的方式生成HTTPS证书 xx.domain.com 替换为你指定的子域名，只支持单个子域名
 sudo certbot certonly --agree-tos --email xx@gmail.com --webroot -w /var/lib/letsencrypt/ -d xx.domain.com 3.检查HTTPS证书是否生效 cfssl-certinfo -domain xx.domain.com:443 4 参考文档： 使用certbot的方式生成HTTPS证书 使用lego手动生成tls证书参数文档 </description>
@@ -151,10 +151,10 @@ sudo certbot certonly --agree-tos --email xx@gmail.com --webroot -w /var/lib/let
     
     <item>
       <title>seo网站搜索优化</title>
-      <link>https://hujian.xyz/posts/seo%E4%BC%98%E5%8C%96/</link>
+      <link>https://jianhu2.github.io/posts/seo%E4%BC%98%E5%8C%96/</link>
       <pubDate>Thu, 10 Mar 2022 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/seo%E4%BC%98%E5%8C%96/</guid>
+      <guid>https://jianhu2.github.io/posts/seo%E4%BC%98%E5%8C%96/</guid>
       <description>1. seo网站搜索优化 搜索排行问题，主要是两方面优化方向：
 第一是外链引用 第二是让搜索引擎的爬虫能收录/分析页面中的文本 技术相关的是第二，针对技术上的解决方案:
 分析是否指定的浏览器才能展示结果，比如google游览器能正常访问网页，IE游览器访问 404，这样会影响搜索引擎的爬虫对真实内容的爬取，搜索引擎收录到这样的页面，一个相关的词都没有，搜索索引是没法建立的。解决方案是去掉这个判断逻辑。
@@ -166,10 +166,10 @@ sudo certbot certonly --agree-tos --email xx@gmail.com --webroot -w /var/lib/let
     
     <item>
       <title>ssh密钥对</title>
-      <link>https://hujian.xyz/posts/ssh%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E5%AF%B9/</link>
+      <link>https://jianhu2.github.io/posts/ssh%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E5%AF%B9/</link>
       <pubDate>Wed, 10 Mar 2021 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/ssh%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E5%AF%B9/</guid>
+      <guid>https://jianhu2.github.io/posts/ssh%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E5%AF%B9/</guid>
       <description>1. ssh密钥对 ssh key的类型有四种，分别是dsa、rsa、 ecdsa、ed25519。 根据数学特性，这四种类型又可以分为两大类，dsa/rsa是一类，ecdsa/ed25519是一类，后者算法更先进。 dsa因为安全问题，已不再使用了。 ecdsa因为政治原因和技术原因，也不推荐使用。 rsa是目前兼容性最好的，应用最广泛的key类型，在用ssh-keygen工具生成key的时候，默认使用的也是这种类型。不过在生成key时，如果指定的key size太小的话，也是有安全问题的，推荐key size是3072或更大。 ed25519是目前最安全、加解密速度最快的key类型，由于其数学特性，它的key的长度比rsa小很多，优先推荐使用。它目前唯一的问题就是兼容性，即在旧版本的ssh工具集中可能无法使用。不过据我目前测试，还没有发现此类问题 2. ed25519 生成密钥对 ssh-keygen -t ed25519 -C &amp;quot;your_email@example.com&amp;quot; -f ed25519file
 参数解释： -t： 指定使用的数字签名算法； -C: 注释，随便填； -f: 指定文件输出位置，可选默认为 ~/.ssh/ 3. 验证ssh密钥对 添加公钥：
 Gitee公钥管理页面 GitHub公钥管理页面 验证命令，前提条件: 已经添加了公钥
@@ -178,10 +178,10 @@ Gitee公钥管理页面 GitHub公钥管理页面 验证命令，前提条件: �
     
     <item>
       <title>docker基础应用</title>
-      <link>https://hujian.xyz/posts/docker%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/</link>
+      <link>https://jianhu2.github.io/posts/docker%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/</link>
       <pubDate>Tue, 02 Mar 2021 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/posts/docker%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/</guid>
+      <guid>https://jianhu2.github.io/posts/docker%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/</guid>
       <description>1.指定docker数据存储路径 1.1 环境： centos 7.9 Docker version 20.10.10, build b485636 1.2 设置docker工作目录： 查看docker配置文件root目录 [root@localhost ~]# cat /usr/lib/systemd/system/docker.service |grep &amp;#34;ExecStart&amp;#34;ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock 停止正在运行的docker镜像以及docker服务 查看docker实际的数据存储目录，移动源(旧)数据到新的docker root目录： 1 2 3 docker info |grep &amp;#34;Docker Root Dir&amp;#34; systemctl stop docker.socket mv /var/lib/docker /data docker指定data存储位置 配置注意事项 1：以下内容中 &amp;ndash;insecure-registry=192.168.0.15 此处改为你自己服务器ip。 或者不填写也可以; 2：以下内容中 -graph /data/docker 是指定docker root路径 3：Docker version 23.</description>
     </item>
     

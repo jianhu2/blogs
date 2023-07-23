@@ -2,53 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 老胡的星辰随笔</title>
-    <link>https://hujian.xyz/tags/</link>
+    <link>https://jianhu2.github.io/tags/</link>
     <description>Recent content in Tags on 老胡的星辰随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 May 2023 16:19:04 +0800</lastBuildDate><atom:link href="https://hujian.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 May 2023 16:19:04 +0800</lastBuildDate><atom:link href="https://jianhu2.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>docker</title>
-      <link>https://hujian.xyz/tags/docker/</link>
+      <link>https://jianhu2.github.io/tags/docker/</link>
       <pubDate>Wed, 10 May 2023 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/tags/docker/</guid>
+      <guid>https://jianhu2.github.io/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>k8s</title>
-      <link>https://hujian.xyz/tags/k8s/</link>
+      <link>https://jianhu2.github.io/tags/k8s/</link>
       <pubDate>Wed, 10 May 2023 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/tags/k8s/</guid>
+      <guid>https://jianhu2.github.io/tags/k8s/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>https://hujian.xyz/tags/linux/</link>
+      <link>https://jianhu2.github.io/tags/linux/</link>
       <pubDate>Fri, 28 Apr 2023 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/tags/linux/</guid>
+      <guid>https://jianhu2.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>website</title>
-      <link>https://hujian.xyz/tags/website/</link>
+      <link>https://jianhu2.github.io/tags/website/</link>
       <pubDate>Mon, 20 Mar 2023 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/tags/website/</guid>
+      <guid>https://jianhu2.github.io/tags/website/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ssh</title>
-      <link>https://hujian.xyz/tags/ssh/</link>
+      <link>https://jianhu2.github.io/tags/ssh/</link>
       <pubDate>Wed, 10 Mar 2021 16:19:04 +0800</pubDate>
       
-      <guid>https://hujian.xyz/tags/ssh/</guid>
+      <guid>https://jianhu2.github.io/tags/ssh/</guid>
       <description></description>
     </item>
     
