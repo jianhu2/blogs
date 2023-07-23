@@ -6,7 +6,26 @@
     <description>Recent content on 老胡的星辰随笔</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Jul 2023 15:42:22 +0800</lastBuildDate><atom:link href="https://jianhu2.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Jul 2023 16:19:04 +0800</lastBuildDate><atom:link href="https://jianhu2.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>goland IED追新</title>
+      <link>https://jianhu2.github.io/posts/goland-ide%E8%BF%BD%E6%96%B0/</link>
+      <pubDate>Fri, 21 Jul 2023 16:19:04 +0800</pubDate>
+      
+      <guid>https://jianhu2.github.io/posts/goland-ide%E8%BF%BD%E6%96%B0/</guid>
+      <description>追新2023，goland激活码快速激活至2099年！ 当前教程支持的版本：2020.2 ~ GoLand 2023.2 232.8453.111
+前言：
+goland 软件开发公司 jetbrains 在 2022 年 4 月发布了 goland 2022年第一个大版本2022.1，同时也带来了最严厉的反破解机制，之前所有的破解方案全部失效！在这样的背景下，在奋战了几周左右之后还是成功破解了最新版本2022.1.2！之前的教程中，在破解过程中需要各位码友们自己去操作一些东西，改一下配置，造成了部分不仔细的码友 goland 重启后打不开（虽然后续联系到我修复并激活成功，但是这样确实浪费时间和精力）。同时由于各个版本的配置稍微有些变化，所以本次教程更新给大家带来真正硬核的破解方式：一键脚本激活！！！不需要各位码友有任何多余的操作，只需要双击 vbs 脚本执行，然后重启 goland 就可以完成激活！
+注意：本脚本做了向下兼容到2020.1，如果您不想升级，直接执行脚本后重启软件就可以完成激活！
+破解过程详解：
+1、软件准备 （1）goland 软件安装包（官网下载安全又快速）：https://www.jetbrains.com/goland/download/#section=windows
+（2）获取激活码，激活包下载。各位码友们只管关心下图中 golandActive.vbs 脚本文件即可！
+网盘地址(2023/07/23更新)：https://pan.baidu.com/s/1hVWbs9z-Deu5RmQ0PO0hTQ?pwd=3fo7
+提取码：3fo7
+网盘下载后文件zip解压密码：abc1
+2、破解过程 2.1软件安装 在官网下载软件后一直点击 Next 即可（已经安装的码友们不用理会），然后打开 goland，发现需要注册！这里我们先不管，先点击 Exit 退出，准备开始运行激活脚本。 2.2 获取激活码 请确保 goland 软件处于关闭状态！ 鼠标双击网盘下载的破解包里面的 golandActive.vbs 得到如下界面，点击确定按钮即可！</description>
+    </item>
+    
     <item>
       <title>kubernetes常用命令</title>
       <link>https://jianhu2.github.io/posts/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>

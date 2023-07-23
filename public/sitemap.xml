@@ -2,11 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jianhu2.github.io/about/</loc>
-    <lastmod>2023-07-19T15:42:22+08:00</lastmod>
+    <loc>https://jianhu2.github.io/posts/goland-ide%E8%BF%BD%E6%96%B0/</loc>
+    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jianhu2.github.io/tags/ide/</loc>
+    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jianhu2.github.io/posts/</loc>
+    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jianhu2.github.io/tags/</loc>
+    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jianhu2.github.io/</loc>
-    <lastmod>2023-07-20T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jianhu2.github.io/about/</loc>
+    <lastmod>2023-07-19T15:42:22+08:00</lastmod>
   </url><url>
     <loc>https://jianhu2.github.io/tags/docker/</loc>
     <lastmod>2023-07-20T00:00:00+00:00</lastmod>
@@ -15,12 +27,6 @@
     <lastmod>2023-07-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jianhu2.github.io/posts/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2023-07-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jianhu2.github.io/posts/</loc>
-    <lastmod>2023-07-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://jianhu2.github.io/tags/</loc>
     <lastmod>2023-07-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://jianhu2.github.io/tags/linux/</loc>
