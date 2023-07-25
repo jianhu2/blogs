@@ -1,7 +1,7 @@
 ---
 title: "nginx 301跳转问题总结"
 subtitle: ""
-date: 2023-07-25T110:19:04+08:00
+date: 2023-07-25T10:19:04+08:00
 lastmod: "2023-07-25"
 draft: false
 tags: ["nginx"]
@@ -10,7 +10,7 @@ hideFromHomePage: false
 
 # 1.nginx 301跳转问题背景
  在使用hugo部署博客，部署方案nginx+docker,在浏览器地址使用url访问静态资源目录时，发现默认跳转到了http协议的地址。
- 调出浏览器发现客户端发送的https请求收到了一个301状态码的响应，并且响应头中的Location字段便是跳转到的http协议的地址。
+ 调出浏览器发现客户端发送的http请求收到了一个301状态码的响应，并且响应头中的Location字段便是跳转到的http协议的地址。
  ![issue](/images/nginx301issue.png)
 
 # 2.原因分析
