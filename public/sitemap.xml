@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://me.hujian.xyz/tags/nginx/</loc>
+    <lastmod>2023-07-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://me.hujian.xyz/posts/nginx-301%E8%B7%B3%E8%BD%AC%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2023-07-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://me.hujian.xyz/posts/</loc>
+    <lastmod>2023-07-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://me.hujian.xyz/tags/</loc>
+    <lastmod>2023-07-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://me.hujian.xyz/</loc>
+    <lastmod>2023-07-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://me.hujian.xyz/posts/goland-ide%E8%BF%BD%E6%96%B0/</loc>
     <lastmod>2023-07-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://me.hujian.xyz/tags/ide/</loc>
-    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://me.hujian.xyz/posts/</loc>
-    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://me.hujian.xyz/tags/</loc>
-    <lastmod>2023-07-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://me.hujian.xyz/</loc>
     <lastmod>2023-07-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://me.hujian.xyz/about/</loc>
