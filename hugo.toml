@@ -108,11 +108,11 @@ hasCJKLanguage = false
     # Valine评论（详情请移步：https://valine.js.org/）
     [params.valine]
         # 是否开启Valine评论系统
-        enable = false
+        enable = true
         # appid，具体请参考：https://valine.js.org/configuration.html#appId
-        appid = 'xxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxx'
+        appid = '8rDSi5Yno1x54JaRiqlaJenc-gzGzoHsz'
         # appKey，具体请参考：https://valine.js.org/configuration.html#appKey
-        appkey = 'xxxxxxxxxxxxxxxxxxxxxxxx'
+        appkey = 'lPOyu3wZHZxR7QnsQeDWzkJr'
         # 输入框提示文字
         placeholder = '输入你的评论'
         # 头像，具体请参考：https://valine.js.org/avatar.html
