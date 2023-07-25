@@ -49,41 +49,41 @@ hideFromHomePage: false
    ```  
 
 5. 重启docker 生效
-    ```
-    systemctl daemon-reload
-    systemctl restart docker 
-    ```
+   
+- `systemctl daemon-reload`
+- `systemctl restart docker `
+    
 
 # 2. 常用命令
 ## 2.1 查看容器网络映射端口
-docker network inspect bridge
+`docker network inspect bridge`
 ## 2.2 进入容器
-docker exec -it 63021ad8716d /bin/bash
+`docker exec -it 63021ad8716d /bin/bash`
 
 ## 2.3 查看使用状态
-docker stats
+`docker stats`
 
 ## 2.4 查看Docker正在运行的容器是通过什么命名启动的
-docker ps -a --no-trunc
-docker history minio/minio:latest --format "table {{.ID}}{{.CreatedBy}}" --no-trunc
+- `docker ps -a --no-trunc`
+- `docker history minio/minio:latest --format "table {{.ID}}{{.CreatedBy}}" --no-trunc`
 
 ## 2.5  查看docker 占用的空间
-docker system df
-docker system df -v
+`docker system df`
+`docker system df -v`
 ## 2.6 清理docker磁盘空间
-docker system prune -a
-sudo apt-get clean
+`docker system prune -a`
+`sudo apt-get clean`
 ## 2.7 批量删除镜像
 * 2.7.1 批量删除无tag标签镜像
-  - docker images|grep none|awk '{print $3}'|xargs docker rmi
+  - `docker images|grep none|awk '{print $3}'|xargs docker rmi`
 
 * 2.7.2 批量删除已经退出的容器：
-  - docker ps -a |grep Exited|awk '{print $1}'|xargs docker rm
+  - `docker ps -a |grep Exited|awk '{print $1}'|xargs docker rm`
 *  2.7.3 强制删除所有的镜像 
-  - docker rmi -f $(docker images -qa)
+  - `docker rmi -f $(docker images -qa)`
 ##  2.8 查看日志
 * 2.8.1 查看指定时间日志:
- ```
+```
 docker logs -t --since="2022-11-16" d1826d2bb544
 docker logs minio --since="2022-11-16" 2>&1 --until "2022-11-16T18:30" 
 docker logs minio --since="2022-11-16" 2>&1 --until "2022-11-16T18:30" |grep "error"
@@ -101,18 +101,19 @@ docker update --restart=always 你的镜像名称
 
 ## 2.10 docker 镜像内复制文件到宿主机上
 
-docker cp iotsquare:/etc/iotsquare/iotsquare.toml .
+`docker cp iotsquare:/etc/iotsquare/iotsquare.toml . `
 
 ## 2.11  宿主机上文件复制到 docker 镜像内
 
-docker cp iotsquare.toml iotsquare:/home
+`docker cp iotsquare.toml iotsquare:/home`
 
 ## 2.10 docker 保存镜像
 
-docker save -o test.tar registry.cn-shenzhen.aliyuncs.com/{{name}}/{object}:{version}
+`docker save -o test.tar registry.cn-shenzhen.aliyuncs.com/{{name}}/{object}:{version}`
 
 ## 2.11 docker 加载镜像
-docker load --input test.tar
+`docker load --input test.tar`
+
 ## 2.12. **创建和运行容器**：
 - `docker run`：运行一个新的容器。
 - `docker start`：启动一个已停止的容器。
