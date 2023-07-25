@@ -33,6 +33,8 @@ webSocket、libp2p、MQTT长连接。 TCP/IP网络协议 基于SSH Tunnel技术�
     <link rel="stylesheet" href='/css/home.css' />
     <link rel="stylesheet" href='/css/syntax.css' />
     
+        <link rel="stylesheet" href='/css/comment.css' />
+    
     <link rel="stylesheet" href='/css/shortcode.css' />
     
     
@@ -41,6 +43,8 @@ webSocket、libp2p、MQTT长连接。 TCP/IP网络协议 基于SSH Tunnel技术�
          
     </style>
     
+    
+        <script src='//cdnjs.cloudflare.com/ajax/libs/valine/1.5.0/Valine.min.js'></script>
     
     
     
@@ -260,6 +264,10 @@ webSocket、libp2p、MQTT长连接。 TCP/IP网络协议 基于SSH Tunnel技术�
                 </button>
             
             
+                <button class="pinglun content-last-item efct-button">
+                    <i class="fa fa-comment"></i>
+                </button>
+            
         </div>
     
 
@@ -269,6 +277,11 @@ webSocket、libp2p、MQTT长连接。 TCP/IP网络协议 基于SSH Tunnel技术�
                 
 <div class="zhuti-r-0">
     <div class="zhuti-r-1">
+        
+            <div class="button-r">
+                <button class="button-mulu efct-button" type="button"><span><i class="fa fa-bars"></i></span><span class="bars-text"> 目录</span></button>
+                <button class="button-comment efct-button" type="button"><span><i class="fa fa-comment"></i></span><span class="comment-text"> 评论</span></button>
+            </div>
         
         <div id="r1">
             
@@ -527,7 +540,21 @@ getenforce或sestatus 2.0.2 修改selinux配置 1 2 3 4 5 vim /etc/selinux/con
 </div>
         </div>
         <div id="r2">
-            
+            <div id="vcomments"></div>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments',
+        appId: "8rDSi5Yno1x54JaRiqlaJenc-gzGzoHsz",
+        appKey: "lPOyu3wZHZxR7QnsQeDWzkJr",
+        avatar: "robohash",
+        placeholder: "输入你的评论",
+        requiredFields: ["nick"],
+        visitor:  true ,
+        pageSize:  5 ,
+});
+</script>
+
         </div> 
     </div>
 </div>
