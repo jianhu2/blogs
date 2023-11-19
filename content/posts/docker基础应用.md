@@ -2,9 +2,9 @@
 title: "docker基础应用"
 subtitle: ""
 date: 2021-03-02T16:19:04+08:00
-lastmod: "2023-06-21"
+lastmod: "2023-11-19"
 draft: false
-description: "指定docker数据存储路径，常用的docker命令"
+description: "docker容器夸主机通信，指定docker数据存储路径，常用的docker命令"
 image: "/images/Docker-build.png"
 tags: [ "docker" ]
 hideFromHomePage: false
@@ -160,28 +160,46 @@ docker update --restart=always 你的镜像名称
 
 - `docker cp`：在容器和主机之间拷贝文件。
 
-## 2.16. **管理网络**：
-
-- `docker network ls`：列出所有网络。
-- `docker network create`：创建一个新的网络。
-- `docker network rm`：删除一个网络。
-
-## 2.17. **管理数据卷**：
+## 2.16. **管理数据卷**：
 
 - `docker volume ls`：列出所有数据卷。
 - `docker volume create`：创建一个新的数据卷。
 - `docker volume rm`：删除一个数据卷。
 
-## 2.18. **查找容器和镜像**：
+## 2.17. **查找容器和镜像**：
 
 - `docker search`：在 Docker Hub 上搜索镜像。
 
-## 2.19. **暂停和恢复容器**：
+## 2.18. **暂停和恢复容器**：
 
 - `docker pause`：暂停一个运行中的容器。
 - `docker unpause`：恢复一个暂停的容器。
 
-## 2.20 **查看docker容器是否挂载到默认docker0网卡上**
+## 2.19 docker 容器网络相关命令操作
+
+## 2.19.1 **管理网络**：
+
+- `docker network ls`：列出所有网络。
+- `docker network create`：创建一个新的网络。
+- `docker network rm`：删除一个网络。
+
+## 2.19.2  获取容器的 IP 地址
+``` 
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <容器ID> 
+```
+
+## 2.19.3 配置docker0指定网段
+vi /usr/lib/systemd/system/docker.service
+```
+ExecStart=/usr/bin/dockerd  --graph  /data/docker  -H fd:// --containerd=/run/containerd/containerd.sock --bip=10.10.0.1/24
+```
+
+重启修改配置生效
+```
+systemctl  daemon-reload
+systemctl restart docker
+```
+## 2.19.4 **查看docker容器是否挂载到默认docker0网卡上**
 
 interfaces对应的网卡名字
 
@@ -205,13 +223,9 @@ root@localhost ~ # brctl show
   docker0         8000.02424791fe9e       no
 ```
 
-## 2.21  获取容器的 IP 地址
-``` 
-docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <容器ID> 
-```
 
 
-## 2.22 添加和删除路由
+## 2.19.5 添加和删除路由
 
 添加路由：
 ```
@@ -231,24 +245,14 @@ route  delete -net 172.20.0.0/24
 sudo ip route flush cache
 ```
 
-## 2.23 tcpdump分析ping包是否正常
+## 2.19.6 tcpdump分析ping包是否正常
 源主机ping目的主机，在源主机分析tcp包
 ```
 ping 172.20.0.1
 tcpdump -i ens33 -vnn icmp
 ```
 
-## 2.24 配置docker0指定网段
-vi /usr/lib/systemd/system/docker.service
-```
-ExecStart=/usr/bin/dockerd  --graph  /data/docker  -H fd:// --containerd=/run/containerd/containerd.sock --bip=10.10.0.1/24
-```
-systemctl  daemon-reload
-
-systemctl restart docker
-
-
-## 2.25 查看ARP记录，根据三层IP地址查询对应的二层Mac地址
+## 2.19.7 查看ARP记录，根据三层IP地址查询对应的二层Mac地址
 查询宿主机的网卡设备ARP记录：
 ```                                                    
  ip neigh show dev ens33
