@@ -58,10 +58,11 @@ hideFromHomePage: false
 - `systemctl restart docker `
 
 # 2. 常用命令
-
-## 2.1 查看容器网络映射端口
-
-`docker network inspect bridge`
+## 2.1 编译docker镜像操作
+去缓存构建镜像：
+```
+docker build -t test:1.1 --no-cache .
+```
 
 ## 2.2 进入容器
 
@@ -177,18 +178,21 @@ docker update --restart=always 你的镜像名称
 
 ## 2.19 docker 容器网络相关命令操作
 
-## 2.19.1 **管理网络**：
+### 2.19.1 查看容器网络映射端口
 
+`docker network inspect bridge`
+
+管理网络命令：
 - `docker network ls`：列出所有网络。
 - `docker network create`：创建一个新的网络。
 - `docker network rm`：删除一个网络。
 
-## 2.19.2  获取容器的 IP 地址
+### 2.19.2  获取容器的 IP 地址
 ``` 
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <容器ID> 
 ```
 
-## 2.19.3 配置docker0指定网段
+### 2.19.3 配置docker0指定网段
 vi /usr/lib/systemd/system/docker.service
 ```
 ExecStart=/usr/bin/dockerd  --graph  /data/docker  -H fd:// --containerd=/run/containerd/containerd.sock --bip=10.10.0.1/24
@@ -199,7 +203,7 @@ ExecStart=/usr/bin/dockerd  --graph  /data/docker  -H fd:// --containerd=/run/co
 systemctl  daemon-reload
 systemctl restart docker
 ```
-## 2.19.4 **查看docker容器是否挂载到默认docker0网卡上**
+### 2.19.4 **查看docker容器是否挂载到默认docker0网卡上**
 
 interfaces对应的网卡名字
 
@@ -225,7 +229,7 @@ root@localhost ~ # brctl show
 
 
 
-## 2.19.5 添加和删除路由
+### 2.19.5 添加和删除路由
 
 添加路由：
 ```
@@ -245,14 +249,14 @@ route  delete -net 172.20.0.0/24
 sudo ip route flush cache
 ```
 
-## 2.19.6 tcpdump分析ping包是否正常
+### 2.19.6 tcpdump分析ping包是否正常
 源主机ping目的主机，在源主机分析tcp包
 ```
 ping 172.20.0.1
 tcpdump -i ens33 -vnn icmp
 ```
 
-## 2.19.7 查看ARP记录，根据三层IP地址查询对应的二层Mac地址
+### 2.19.7 查看ARP记录，根据三层IP地址查询对应的二层Mac地址
 查询宿主机的网卡设备ARP记录：
 ```                                                    
  ip neigh show dev ens33
