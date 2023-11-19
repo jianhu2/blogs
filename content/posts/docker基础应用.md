@@ -248,6 +248,16 @@ systemctl  daemon-reload
 systemctl restart docker
 
 
+## 2.25 查看ARP记录，根据三层IP地址查询对应的二层Mac地址
+查询宿主机的网卡设备ARP记录：
+```                                                    
+ ip neigh show dev ens33
+```
+
+查询目的地址二层数据帧：
+```
+bridge fdb show |grep "{{mac address}}"
+```
 
 # 3. [docker镜像库]
 ## 3.1官方镜像库(https://hub.docker.com/)
