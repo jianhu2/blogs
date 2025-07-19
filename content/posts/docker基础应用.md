@@ -2,7 +2,7 @@
 title: "docker基础应用"
 subtitle: ""
 date: 2021-03-02T16:19:04+08:00
-lastmod: "2023-11-19"
+lastmod: "2025-07-19"
 draft: false
 description: "docker容器夸主机通信，指定docker数据存储路径，常用的docker命令"
 image: "/images/Docker-build.png"
@@ -317,7 +317,7 @@ chmod +x /usr/local/bin/docker-compose
 
 # 6. docker 配置代理
 
-### 1. 修改配置
+### 1.1 nano方式 修改配置
 
 $ systemctl edit docker.service
 
@@ -328,13 +328,28 @@ Environment="HTTPS_PROXY=http://192.168.159.132:8123"
 Environment="NO_PROXY=localhost,127.0.0.1"
 ```
 
-### 2. 显示配置结果：
+### 1.2 显示配置结果：
 
 ```systemctl show --property Environment docker.service ```
 
-### 3. 重新启动服务
 
-``` systemctl restart docker.service```
+### 2.1 vi方式 修改配置
+```shell
+
+# vi  /usr/lib/systemd/system/docker.service
+[Service]
+Environment="HTTP_PROXY=http://127.0.0.1:10081"
+Environment="HTTPS_PROXY=http://127.0.0.1:10081"
+Environment="NO_PROXY=localhost,127.0.0.1"
+
+```
+
+### 3 重新启动服务生效
+
+``` 
+systemctl daemon-reload
+systemctl restart docker.service
+```
 
 # 参考链接
 
