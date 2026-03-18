@@ -2,12 +2,11 @@
 title: "AI 学习指北"
 subtitle: ""
 date: 2026-03-17T00:19:04+08:00
-lastmod: "2026-03-17"
+lastmod: "2026-03-18"
 draft: false
 tags: ["AI"]
 hideFromHomePage: false
 ---
-
 ### **Last news**
 + [大模型 2024-25 年发展了哪些方面](https://www.bestblogs.dev/en/article/ece92a)
 + [2025 年上半年AI使用情况和趋势](https://artificialanalysis.ai/downloads/ai-adoption-survey/2025/Artificial-Analysis-AI-Adoption-Survey-H1-2025.pdf)
@@ -19,7 +18,7 @@ hideFromHomePage: false
 #### 定义
 LLM 是基于海量文本数据训练的深度学习模型，能够理解、生成和推理人类语言，通过预测文本序列的概率分布实现智能交互。
 
-![llm.png](static/images/llm.png)
+![llm.png](/images/llm.png)
 
 ### RAG（Retrieval-Augmented Generation，检索增强生成）
 #### 定义
@@ -32,7 +31,7 @@ RAG 是一种将实时信息检索与大语言模型结合的架构，通过从�
 4. LLM 输出带引用信息的回答。
 5. 前端渲染回答、可选地在可视化界面中展示引用详情。
 
-![rag.png](static/images/rag.png)
+![rag.png](/images/rag.png)
 
 + RAG和LLM区别：
     - RAG 不是新模型，而是LLM的增强框架。
@@ -48,7 +47,7 @@ RAG 是一种将实时信息检索与大语言模型结合的架构，通过从�
 Model Context Protocol (MCP) 是由 Anthropic 开发的开放标准协议，为 AI 与外部工具和数据源提供标准化交互接口。AI 通过此协议访问软件工具和数据资源。
 
 
-![mcp.png](static/images/mcp.png)
+![mcp.png](/images/mcp.png)
 
 RAG 和MCP可以相互协作
 

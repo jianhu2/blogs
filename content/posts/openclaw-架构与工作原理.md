@@ -2,12 +2,11 @@
 title: "AI Agent OpenClaw 架构与工作原理"
 subtitle: ""
 date: 2026-03-17T08:19:04+08:00
-lastmod: "2026-03-17"
+lastmod: "2026-03-18"
 draft: false
 tags: ["AI"]
 hideFromHomePage: false
 ---
-
 > 技术分享 · Agent 架构 · Tool Use 机制 · LLM
 >
 
@@ -15,7 +14,7 @@ hideFromHomePage: false
 
 ## 1. OpenClaw 架构
 <!-- 这是一张图片，ocr 内容为： -->
-![](static/images/openclaw_arch_overview.png)
+![](/images/openclaw_arch_overview.png)
 > 消息从 Channels 进入 Agent Runtime，由 Planner 驱动循环，Tools / Memory / LLM 均由 Planner 主动调用。
 >
 
@@ -66,7 +65,7 @@ hideFromHomePage: false
 Planner 实现了 Agent Loop，是 openclaw 能自主执行多步骤任务的核心。每一轮循环包含完整的"推理 → 决策 → 执行 → 观察"链路：
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](static/images/openclaw_planner_loop.png)
+![](/images/openclaw_planner_loop.png)
 
 > LLM 推理 → 判断是否需要工具 → 返回 tool_use block → Tool 执行 → tool_result 写入 Memory → 下一轮 LLM 输入；直到 LLM 判断任务完成，输出自然语言回答。
 >
@@ -83,7 +82,7 @@ Planner 实现了 Agent Loop，是 openclaw 能自主执行多步骤任务的核
 Tools 是 openclaw 真正"干活"的地方，三类核心工具：
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](static/images/shell_file.png)
+![](/images/shell_file.png)
 
 #### `exec/file_search` — shell 命令执行（本地）
 + 执行任意 bash / zsh / python 命令
@@ -137,7 +136,7 @@ openclaw 支持多种 LLM provider，通过配置切换：kimi、GPT-4、Claude�
 
 ## 3. 完整工作流程（两轮对话）
 <!-- 这是一张图片，ocr 内容为： -->
-![](static/images/openclaw_two_round_flow.png)
+![](/images/openclaw_two_round_flow.png)
 
 > 第一轮：gateway 将用户消息 + tools 定义发给 LLM，LLM 返回 tool_use block，Planner 解析后执行 Tool，结果写入 Memory。第二轮：gateway 将对话历史 + tool_result 再次发给 LLM，LLM 生成自然语言回答返回给用户。
 >
@@ -152,7 +151,7 @@ openclaw 支持多种 LLM provider，通过配置切换：kimi、GPT-4、Claude�
 >
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](static/images/agent-tools.png)
+![](/images/agent-tools.png)
 
 | 概念 | 类比 | 本质 |
 | --- | --- | --- |
