@@ -1,5 +1,5 @@
 ---
-title: "AI 学习指北"
+title: "AI-学习指北"
 subtitle: ""
 date: 2026-03-17T00:19:04+08:00
 lastmod: "2026-03-18"
