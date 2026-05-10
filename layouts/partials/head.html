@@ -3,13 +3,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ .Site.Title }}{{ if not .IsHome }}{{ with .Title }} | {{ . }}{{ end }}{{ end }}</title>
-    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }} ">
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
     <link rel="canonical" href="{{ .Permalink }}" />
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    {{ template "_internal/opengraph.html" . }}
-    {{ template "_internal/twitter_cards.html" . }}
-    {{ if not (in (string .Site.BaseURL) "localhost") }}
-        {{ template "_internal/google_analytics_async.html" . }}
+    {{ partial "opengraph.html" . }}
+    {{ partial "twitter_cards.html" . }}
+    {{ if and (not (in (string .Site.BaseURL) "localhost")) .Site.Config.Services.GoogleAnalytics.ID }}
+        {{ partial "google_analytics.html" . }}
     {{ end }}
 
     <link rel="stylesheet" href='/css/style.css' />

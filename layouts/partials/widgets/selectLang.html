@@ -1,11 +1,11 @@
-{{ $nowIsDefaultLang := eq .Site.Language.Weight 1 }}
+{{ $nowIsDefaultLang := .Site.Language.IsDefault }}
 <div class="lang-box-up">
     <div class="lang-box">
-        <div class="lang-now">{{ .Language.LanguageName }}</div>
+        <div class="lang-now">{{ .Language.Label }}</div>
         <div class="wait-lang-box">
             <ul class="lang-up">
                 {{ range $.Site.Home.AllTranslations }}
-                <li data—permalink="{{ .Permalink }}" class="lang">{{ .Language.LanguageName }}</li>
+                <li data—permalink="{{ .Permalink }}" class="lang">{{ .Language.Label }}</li>
                 {{ end }}
             </ul>
         </div>

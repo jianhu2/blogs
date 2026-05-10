@@ -1,15 +1,10 @@
-
 {{ range .Data.Terms.ByCount }}
-{{ $pageTitle := .Page.Title }}
-{{ $pageCount := .Count }}
-<div class="taxo-col taxo-col-tag">
-    <a href="{{ .Page.Permalink }}">
-        <div class="tag-taxo-card">
-            <div class="tag-taxo-text">
-                <span><i class="fa fa-tag"></i></span>
-                {{ $pageTitle }}
-            </div>
-        </div>
-    </a>
-</div>
+{{ $tagName := .Page.Title }}
+{{ $count := .Count }}
+{{ $style := partial "widgets/tag-style.html" $tagName }}
+<a class="tag-pill" href="{{ .Page.Permalink }}" style="--card-from: {{ $style.from }}; --card-to: {{ $style.to }};">
+    <span class="tag-pill-icon"><i class="fa {{ $style.icon }}" aria-hidden="true"></i></span>
+    <span class="tag-pill-name">{{ $tagName }}</span>
+    <span class="tag-pill-count">{{ $count }}</span>
+</a>
 {{ end }}

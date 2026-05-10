@@ -1,7 +1,7 @@
 {{ $class1 := "" }}
 {{ $isPage := or (eq .Kind "page") (eq .Section "about") }}
-{{ $langNow := .Lang }}
-{{ $isMultiLingual := and (ne .Site.Language.Weight 1) (and .Site.IsMultiLingual (not .Site.Params.Site.OnlyOneLang)) }}
+{{ $langNow := .Site.Language.Name }}
+{{ $isMultiLingual := and (not .Site.Language.IsDefault) (and hugo.IsMultilingual (not .Site.Params.Site.OnlyOneLang)) }}
 {{ if $isPage }}
     {{ $class1 = "content-root" }}
 {{ else if eq .Kind "taxonomy" }}
@@ -32,11 +32,7 @@
                     {{ range $tag := .Params.tags }}
                     <span class="down-type-item">
                         <div class="type-text">
-                            <a href='{{ if $isMultiLingual }}
-                                        {{ $langNow | relURL}}/tags/{{ $tag | urlize }}
-                                    {{ else }}
-                                        {{ "tags/" | relURL }}{{ $tag | urlize }}
-                                    {{ end }}'>
+                            <a href='{{- if $isMultiLingual -}}{{ $langNow | relURL }}/tags/{{ $tag | urlize }}{{- else -}}{{ "tags/" | relURL }}{{ $tag | urlize }}{{- end -}}'>
                                 <i class="fa fa-tag"></i> {{ . }}
                             </a>
                         </div>
@@ -53,14 +49,21 @@
             {{ end }}
         {{ end }}
     {{ else if eq .Kind "term" }}
-        <div class="terms-row">
-            {{ range .Pages }}
-            <div class="terms-root">
-                
-                {{ partial "widgets/post-card.html" . }}
+        {{ if eq .Section "tags" }}
+            <div class="post-row-list">
+                {{ range .Pages.ByDate.Reverse }}
+                    {{ partial "widgets/post-card-term.html" . }}
+                {{ end }}
             </div>
-            {{ end }}
-        </div>
+        {{ else }}
+            <div class="terms-row">
+                {{ range .Pages }}
+                <div class="terms-root">
+                    {{ partial "widgets/post-card.html" . }}
+                </div>
+                {{ end }}
+            </div>
+        {{ end }}
     {{ else if eq .Kind "taxonomy" }}
         <div class='taxo-row {{ if eq .Section "tags" }}taxo-row-tag{{ end }}'>
             {{ if eq .Section "tags" }}

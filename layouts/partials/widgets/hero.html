@@ -1,8 +1,8 @@
-{{ $langNow := .Lang }}
+{{ $langNow := .Site.Language.Name }}
 {{ $hero_img := .Site.Params.page.defaultPostImg }}
 {{ $hero_title := "" }}
 {{ $hero_des := "" }}
-{{ $isMultiLingual := and (ne .Site.Language.Weight 1) (and .Site.IsMultiLingual (not .Site.Params.Site.OnlyOneLang)) }}
+{{ $isMultiLingual := and (not .Site.Language.IsDefault) (and hugo.IsMultilingual (not .Site.Params.Site.OnlyOneLang)) }}
 {{ if eq .Kind "section" }}
     {{ if eq .Section "posts" }}
         {{ $hero_img = .Site.Params.page.allPostsTopImg }}
@@ -67,13 +67,18 @@
     </div>
 
 {{ else if eq .Kind "page" }}
-    <div class="hero">
+    <div class="hero hero-page">
         {{ with .Params.image }}
-            <div class="hero-img">
+            {{ $heroImageFit := $.Params.heroImageFit | default "contain" }}
+            {{ $heroImageClass := "hero-img-page-contain" }}
+            {{ if eq $heroImageFit "cover" }}
+                {{ $heroImageClass = "hero-img-page-fill" }}
+            {{ end }}
+            <div class="hero-img hero-img-page {{ $heroImageClass }}">
                 <img class="lazyload" src="/images/thumbnail.gif" data-src="{{ . }}" alt="">
             </div>
         {{ else }}
-            <div class="hero-img">
+            <div class="hero-img hero-img-page hero-img-page-cover">
                 <img class="lazyload" src="/images/thumbnail.gif" data-src="{{ $hero_img }}" alt="">
             </div>
         {{ end }}
@@ -87,11 +92,7 @@
                         {{ with .Params.categories }}{{ i18n "postInfo_includedIn" }}:{{ else }}{{ i18n "postInfo_notIncluded" }}{{ end }}
                         {{ range $idx, $category := .Params.categories }}
                             {{- if ne $idx 0 }}, {{ end }}
-                            <a href='{{ if $isMultiLingual }}
-                                {{ $langNow | relURL}}/categories/{{ $category | urlize }}
-                            {{ else }}
-                                {{ "categories/" | relURL }}{{ $category | urlize }}
-                            {{ end }}'>
+                            <a href='{{- if $isMultiLingual -}}{{ $langNow | relURL }}/categories/{{ $category | urlize }}{{- else -}}{{ "categories/" | relURL }}{{ $category | urlize }}{{- end -}}'>
                                 {{ $category }}
                             </a>
                         {{- end }}
@@ -101,6 +102,32 @@
                 <span class="no-wrap"><i class="fa fa-pencil"></i> {{ i18n "postInfo_wordsCount" }}: {{ .WordCount }} &nbsp;</span>
                 <span class="no-wrap"><i class="fa fa-clock-o"></i> {{ i18n "postInfo_readingTime" }}: {{ .ReadingTime }} {{ i18n "postInfo_minute" .ReadingTime }} &nbsp;</span>
                 {{ if .Site.Params.footer.visitor }}<span class="no-wrap"><i class="fa fa-eye"></i> {{ i18n "postInfo_viewers" }}: <span id="busuanzi_value_page_pv"></span></span>{{ end }}
+            </div>
+        </div>
+    </div>
+
+{{ else if and (eq .Kind "section") (eq .Section "about") }}
+    <div class="hero hero-about">
+        <div class="hero-about-inner">
+            <div class="hero-about-name">{{ .Site.Params.author.name | default .Site.Title }}</div>
+            <div class="hero-about-tagline">「 {{ .Site.Params.author.description }} 」</div>
+            <div class="hero-about-pillars">
+                <div class="hero-about-pillar">
+                    <i class="fa fa-cubes" aria-hidden="true"></i>
+                    <span>后端架构</span>
+                </div>
+                <div class="hero-about-pillar">
+                    <i class="fa fa-magic" aria-hidden="true"></i>
+                    <span>AI Agent 工程</span>
+                </div>
+                <div class="hero-about-pillar">
+                    <i class="fa fa-cogs" aria-hidden="true"></i>
+                    <span>云原生运维</span>
+                </div>
+                <div class="hero-about-pillar">
+                    <i class="fa fa-line-chart" aria-hidden="true"></i>
+                    <span>探针与可观测性</span>
+                </div>
             </div>
         </div>
     </div>
@@ -119,21 +146,72 @@
     </div>
 
 {{ else if eq .Kind "term" }}
-    <div class="hero">
-        {{ $firstChild := index .Pages 0 }}
-            {{ with $firstChild.Params.image }}
-                <div class="hero-img">
-                    <img class="lazyload" src="/images/thumbnail.gif" data-src="{{ . }}" alt="">
+    {{ if eq .Section "tags" }}
+        {{ $tagStyle := partial "widgets/tag-style.html" .Title }}
+        {{ $postCount := len .Pages }}
+        {{ $currentTagLower := lower .Title }}
+        {{/* collect co-occurring tags (excluding self), dedupe case-insensitively */}}
+        {{ $related := slice }}
+        {{ $seen := slice }}
+        {{ range .Pages }}
+            {{ range .Params.tags }}
+                {{ $lc := lower . }}
+                {{ if and (ne $lc $currentTagLower) (not (in $seen $lc)) }}
+                    {{ $related = $related | append . }}
+                    {{ $seen = $seen | append $lc }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+        {{/* if too few co-occurring tags, supplement with popular site tags */}}
+        {{ if lt (len $related) 4 }}
+            {{ range .Site.Taxonomies.tags.ByCount }}
+                {{ $name := .Page.Title }}
+                {{ $lc := lower $name }}
+                {{ if and (ne $lc $currentTagLower) (not (in $seen $lc)) }}
+                    {{ $related = $related | append $name }}
+                    {{ $seen = $seen | append $lc }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+        {{ $related = first 6 $related }}
+        <div class="hero hero-tag" style="--card-from: {{ $tagStyle.from }}; --card-to: {{ $tagStyle.to }};">
+            <a class="hero-tag-back" href="{{ "tags/" | relURL }}"><i class="fa fa-arrow-left"></i> 所有标签</a>
+            <div class="hero-tag-inner">
+                <div class="hero-tag-icon">
+                    <i class="fa {{ $tagStyle.icon }}" aria-hidden="true"></i>
                 </div>
-            {{ else }}
-                <div class="hero-img">
-                    <img class="lazyload" src="/images/thumbnail.gif" data-src="{{ $hero_img }}" alt="">
+                <div class="hero-tag-name"># {{ .Title }}</div>
+                <div class="hero-tag-meta">{{ $postCount }} 篇文章</div>
+            </div>
+            {{ with $related }}
+                <div class="hero-tag-related">
+                    <span class="hero-tag-related-label">相关标签</span>
+                    {{ range . }}
+                        {{ $rs := partial "widgets/tag-style.html" . }}
+                        <a class="hero-tag-related-pill" href="{{ printf "tags/%s/" (. | urlize) | relURL }}" style="--pill-from: {{ $rs.from }}; --pill-to: {{ $rs.to }};">
+                            <i class="fa {{ $rs.icon }}"></i> {{ . }}
+                        </a>
+                    {{ end }}
                 </div>
             {{ end }}
-        <div class="hero-content">
-            <h1 class="hero-title">{{ $hero_title }}{{ .Title }}</h1>
         </div>
-    </div>
+    {{ else }}
+        <div class="hero">
+            {{ $firstChild := index .Pages 0 }}
+                {{ with $firstChild.Params.image }}
+                    <div class="hero-img">
+                        <img class="lazyload" src="/images/thumbnail.gif" data-src="{{ . }}" alt="">
+                    </div>
+                {{ else }}
+                    <div class="hero-img">
+                        <img class="lazyload" src="/images/thumbnail.gif" data-src="{{ $hero_img }}" alt="">
+                    </div>
+                {{ end }}
+            <div class="hero-content">
+                <h1 class="hero-title">{{ $hero_title }}{{ .Title }}</h1>
+            </div>
+        </div>
+    {{ end }}
 
 {{ end }}
 

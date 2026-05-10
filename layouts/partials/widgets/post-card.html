@@ -1,5 +1,5 @@
-{{ $langNow := .Lang }}
-{{ $isMultiLingual := and (ne .Site.Language.Weight 1) (and .Site.IsMultiLingual (not .Site.Params.Site.OnlyOneLang)) }}
+{{ $langNow := .Site.Language.Name }}
+{{ $isMultiLingual := and (not .Site.Language.IsDefault) (and hugo.IsMultilingual (not .Site.Params.Site.OnlyOneLang)) }}
 {{ $includedIn := "newnewnew" }}
 
 <div class="card-large">
@@ -21,11 +21,7 @@
                     {{ i18n "postInfo_includedIn" }}:
                     {{ range $idx, $category := . }}
                         {{- if ne $idx 0 }}, {{ end }}
-                        <a href='{{ if $isMultiLingual }}
-                                        {{ $langNow | relURL}}/categories/{{ $category | urlize }}
-                                    {{ else }}
-                                        {{ "categories/" | relURL }}{{ $category | urlize }}
-                                    {{ end }}'>
+                        <a href='{{- if $isMultiLingual -}}{{ $langNow | relURL }}/categories/{{ $category | urlize }}{{- else -}}{{ "categories/" | relURL }}{{ $category | urlize }}{{- end -}}'>
                                 {{ $category }}
                             </a>
                     {{- end }}
@@ -55,11 +51,7 @@
                 <div class="shuxian"></div>
             </div>
             <div class="type-text">
-                <a href='{{ if $isMultiLingual }}
-                            {{ $langNow | relURL}}/tags/{{ $tag | urlize }}
-                        {{ else }}
-                            {{ "tags/" | relURL }}{{ $tag | urlize }}
-                        {{ end }}'>
+                <a href='{{- if $isMultiLingual -}}{{ $langNow | relURL }}/tags/{{ $tag | urlize }}{{- else -}}{{ "tags/" | relURL }}{{ $tag | urlize }}{{- end -}}'>
                     <i class="fa fa-tag"></i> {{ . }}
                 </a>
             </div>

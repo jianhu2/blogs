@@ -13,9 +13,7 @@
     </div>
     <div class="list">
         {{ range $newOrRelated }}
-            <a href="{{ .Permalink }}">
-                {{ partial "widgets/post-card-small.html" . }}
-            </a>
+            {{ partial "widgets/post-card-small.html" . }}
         {{ end }}
     </div>
 </div>

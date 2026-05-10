@@ -406,6 +406,95 @@ p > code {
     text-shadow: 0px 0px 3px rgba(var(--primary-rgb), .3);
 }
 
+/* ========================================================
+   Dark mode overrides for custom components.
+   Load order in dark mode: style.css → style-dark.css → _custom.css
+   _custom.css wins ties, so these selectors use higher specificity
+   (compound or descendant) to defeat the light-mode rules.
+   ======================================================== */
+
+/* Secondary text — was rgb(80,80,80) on rgb(60,60,60) bg, unreadable */
+.post-row .post-row-summary,
+.post-row .post-row-date,
+.post-row .post-row-meta,
+.card-mini .card-mini-summary,
+.card-mini .card-mini-meta,
+.side-post .side-post-meta,
+.side-post .side-post-date,
+.hero-tag-related .hero-tag-related-label {
+    color: rgb(170, 170, 170);
+}
+
+/* Primary titles — pop more on dark surface */
+.card-mini .card-mini-title,
+.post-row .post-row-title,
+.side-post .side-post-title {
+    color: rgb(225, 225, 225);
+}
+
+/* Post row separators + hover state */
+.post-row-list .post-row {
+    border-bottom-color: rgba(255, 255, 255, .08);
+}
+
+.post-row-list .post-row:hover {
+    background: rgba(255, 255, 255, .04);
+    color: rgb(225, 225, 225);
+}
+
+.post-row-list .post-row:hover .post-row-title {
+    color: rgb(255, 255, 255);
+}
+
+.post-row-list .post-row:hover .post-row-summary,
+.post-row-list .post-row:hover .post-row-meta,
+.post-row-list .post-row:hover .post-row-date {
+    color: rgb(190, 190, 190);
+}
+
+/* Card-mini surface (homepage 5 cards) */
+.card-mini-grid .card-mini,
+.other .side-post {
+    background: rgb(48, 48, 48);
+    border-color: rgba(255, 255, 255, .08);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .4);
+}
+
+.card-mini-grid .card-mini:hover,
+.other .side-post:hover {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .55);
+}
+
+.card-mini-grid .card-mini:hover .card-mini-title,
+.other .side-post:hover .side-post-title {
+    color: rgb(255, 255, 255);
+}
+
+/* Tag pills on /tags/ — deeper drop shadow on dark bg */
+.taxo-row-tag .tag-pill {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .45);
+}
+
+.taxo-row-tag .tag-pill:hover {
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .6);
+}
+
+/* Tag hero banner on /tags/{tag}/ */
+.hero.hero-tag {
+    box-shadow: 0 6px 22px rgba(0, 0, 0, .35);
+}
+
+/* About identity banner — gradient uses --primary so it auto-tracks dark
+   primary (rgb(217,80,119)). Deepen drop shadow on dark page bg. */
+.hero.hero-about {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .55);
+}
+
+/* Side-post tag (e.g., #AI) brightens in dark */
+.side-post .side-post-tag {
+    filter: brightness(1.2);
+}
+
 
 
 

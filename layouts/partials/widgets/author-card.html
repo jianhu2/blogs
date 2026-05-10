@@ -1,48 +1,36 @@
-{{ $langNow := .Lang }}
-{{ $isMultiLingual := and (ne .Site.Language.Weight 1) (and .Site.IsMultiLingual (not .Site.Params.Site.OnlyOneLang)) }}
+{{ $langNow := .Site.Language.Name }}
+{{ $isMultiLingual := and (not .Site.Language.IsDefault) (and hugo.IsMultilingual (not .Site.Params.Site.OnlyOneLang)) }}
 <div class="about-zuozhe">
     <div class="zuozhe">
-        {{ with .Site.Author.image }}
+        {{ with .Site.Params.author.image }}
             <div class="datou">
                 <img class="lazyload" src="/images/thumbnail.gif" data-src="{{ . }}" alt="">
             </div>
         {{ end }}
         <div class="name-jianjie">
-            <div class="name">{{ .Site.Author.name }}</div>
+            <div class="name">{{ .Site.Params.author.name }}</div>
             <div class="jianjie">
-                {{ .Site.Author.description }}
+                {{ .Site.Params.author.description }}
             </div>
         </div>
     </div>
 
     <div class="type">
-        <a href='{{ if $isMultiLingual }}
-                    {{ $langNow | relURL}}/posts
-                {{ else }}
-                    {{ "posts/" | relURL }}
-                {{ end }}'>
+        <a href='{{- if $isMultiLingual -}}{{ $langNow | relURL }}/posts{{- else -}}{{ "posts/" | relURL }}{{- end -}}'>
             <p>{{ i18n "sidebar_posts" (len .Site.RegularPages) }}</p>
             <p>{{ len .Site.RegularPages }}</p>
         </a>
-        <a href='{{ if $isMultiLingual }}
-                    {{ $langNow | relURL}}/categories
-                {{ else }}
-                    {{ "categories/" | relURL }}
-                {{ end }}'>
+        <a href='{{- if $isMultiLingual -}}{{ $langNow | relURL }}/categories{{- else -}}{{ "categories/" | relURL }}{{- end -}}'>
             <p>{{ i18n "sidebar_categories" (len .Site.Taxonomies.categories) }}</p>
             <p>{{ len .Site.Taxonomies.categories }}</p>
         </a>
-        <a href='{{ if $isMultiLingual }}
-                    {{ $langNow | relURL}}/tags
-                {{ else }}
-                    {{ "tags/" | relURL }}
-                {{ end }}'>
+        <a href='{{- if $isMultiLingual -}}{{ $langNow | relURL }}/tags{{- else -}}{{ "tags/" | relURL }}{{- end -}}'>
             <p>{{ i18n "sidebar_tags" (len .Site.Taxonomies.tags) }}</p>
             <p>{{ len .Site.Taxonomies.tags }}</p>
         </a>
     </div>
 
-    <a href="{{ .Site.Author.link }}">
+    <a href="{{ .Site.Params.author.link }}">
         <div class="follow">Follow Me</div>
     </a>
     <div class="link">

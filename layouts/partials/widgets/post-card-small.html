@@ -1,19 +1,17 @@
-
-<a href="{{ .Permalink }}">
-    <div class="list-item">
-        <div class="icon-other-root">
-            {{ with .Params.image }}
-                <div class="icon-other" style="background-image: url( {{ . }} );"></div>
-            {{ else }}
-                <div class="icon-other" style="background-image: url( {{ .Site.Params.page.defaultPostImg }} );"></div>
-            {{ end }}
-        </div>
-        <div class="list-right">
-            <div class="other-title">
-                {{ .Title }}
-            </div>
-            <div class="other-summary">{{ .Summary }}</div>
-            <div class="other-date">{{ .PublishDate.Format "2006-1-2"}}</div>
+{{- $primaryTag := "" -}}
+{{- with .Params.tags -}}
+    {{- $primaryTag = index . 0 -}}
+{{- end -}}
+{{- $style := partial "widgets/tag-style.html" $primaryTag -}}
+<a class="side-post" href="{{ .Permalink }}" style="--card-from: {{ $style.from }}; --card-to: {{ $style.to }};">
+    <div class="side-post-icon">
+        <i class="fa {{ $style.icon }}" aria-hidden="true"></i>
+    </div>
+    <div class="side-post-body">
+        <div class="side-post-title">{{ .Title }}</div>
+        <div class="side-post-meta">
+            {{ with $primaryTag }}<span class="side-post-tag">#{{ . }}</span>{{ end }}
+            <span class="side-post-date">{{ .PublishDate.Format "2006-01-02" }}</span>
         </div>
     </div>
 </a>

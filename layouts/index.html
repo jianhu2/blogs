@@ -1,5 +1,10 @@
 {{ define "main" }}
-{{ $kind := .Kind }}
+{{ $homePosts := where .Site.RegularPages "Params.hideFromHomePage" "ne" true }}
+{{ $isMultiLingual := and (not .Site.Language.IsDefault) (and hugo.IsMultilingual (not .Site.Params.Site.OnlyOneLang)) }}
+{{ $allPostsURL := "posts" | relURL }}
+{{ if $isMultiLingual }}
+    {{ $allPostsURL = printf "%s/posts" (.Site.Language.Name | relURL) }}
+{{ end }}
 {{ partial "widgets/hero.html" . }}
 <div class="zhuti-0">
     <div class="container">
@@ -12,21 +17,13 @@
                     </h3>
                     <div class="xian-r"></div>
                 </div>
-                <div class="terms-row">
-                    {{ range first .Site.Params.page.maxHomePostCount .Site.RegularPages }}
-                    {{ if and (not .Params.hideFromHomePage) (eq $kind "home") }}
-                    <div class="terms-root">
-                        {{ partial "widgets/post-card.html" . }}
-                    </div>
-                    {{ end }}
+                <div class="card-mini-grid">
+                    {{ range first .Site.Params.page.maxHomePostCount $homePosts }}
+                        {{ partial "widgets/post-card-home.html" . }}
                     {{ end }}
                 </div>
                 <div class="more-posts">
-                    <a href='{{ if and (ne .Site.Language.Weight 1) (and .Site.IsMultiLingual (not .Site.Params.Site.OnlyOneLang)) }}
-                                {{ .Lang | relURL}}/posts
-                            {{ else }} 
-                            {{ "posts" | relURL }}
-                            {{ end }}' class="efct-button">{{ i18n "Home_allPosts" }}</a>
+                    <a href="{{ $allPostsURL }}" class="efct-button">{{ i18n "Home_allPosts" }}</a>
                 </div>
             </div>
         </div>

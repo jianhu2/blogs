@@ -1,0 +1,19 @@
+{{- $tagStyles := dict
+    "ai"        (dict "from" "#6366f1" "to" "#a855f7" "icon" "fa-magic")
+    "linux"     (dict "from" "#f97316" "to" "#f59e0b" "icon" "fa-linux")
+    "docker"    (dict "from" "#0ea5e9" "to" "#2563eb" "icon" "fa-ship")
+    "website"   (dict "from" "#14b8a6" "to" "#06b6d4" "icon" "fa-globe")
+    "windows"   (dict "from" "#2563eb" "to" "#3b82f6" "icon" "fa-windows")
+    "ssh"       (dict "from" "#475569" "to" "#64748b" "icon" "fa-terminal")
+    "tools"     (dict "from" "#84cc16" "to" "#22c55e" "icon" "fa-wrench")
+    "ide"       (dict "from" "#be185d" "to" "#db2777" "icon" "fa-code")
+    "开发环境"   (dict "from" "#0d9488" "to" "#14b8a6" "icon" "fa-cogs")
+    "nginx"     (dict "from" "#16a34a" "to" "#15803d" "icon" "fa-server")
+    "k8s"       (dict "from" "#1d4ed8" "to" "#2563eb" "icon" "fa-anchor")
+-}}
+{{- $key := lower . -}}
+{{- $style := index $tagStyles $key -}}
+{{- if not $style -}}
+    {{- $style = dict "from" "#64748b" "to" "#94a3b8" "icon" "fa-file-text-o" -}}
+{{- end -}}
+{{- return $style -}}
