@@ -4,6 +4,7 @@ subtitle: ""
 date: 2026-03-17T08:19:04+08:00
 lastmod: "2026-03-18"
 draft: false
+image: "/images/openclaw_arch_overview.png"
 tags: ["AI"]
 hideFromHomePage: false
 ---
@@ -182,4 +183,3 @@ openclaw 支持多种 LLM provider，通过配置切换：kimi、GPT-4、Claude�
 ---
 
 _openclaw 技术分享_
-

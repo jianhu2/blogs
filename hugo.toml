@@ -1,5 +1,5 @@
 baseURL = 'https://jianhu.cc'
-languageCode = 'en-us'
+locale = 'zh-cn'
 
 # website title
 # 网站标题
@@ -16,22 +16,12 @@ enableRobotsTXT = true
 
 # length of summary
 # 摘要的字数限制
-summaryLength = 50
+summaryLength = 120
 
 # If true, auto-detect Chinese/Japanese/Korean Languages in the content.
 # This will make .Summary and .WordCount behave correctly for CJK languages.
 # 中日韩语言请改为 true
-hasCJKLanguage = false
-
-[author]
-    name = "kelleygo"
-    description = "随笔记录,为技术沉淀."
-    # profile photo of author in author card
-    # 作者头像
-    image = "/images/touxiang.png"
-    # link of followme in author card and footer
-    # 作者卡片里 followme 和页脚作者的链接
-    link = "https://github.com/jianhu2"
+hasCJKLanguage = true
 
 # Taxonomies, Currently, only the following 3 taxonomies are supported
 # If you don't want one of them，delete it in [menus] instead here
@@ -41,6 +31,18 @@ hasCJKLanguage = false
     series = "series"
 
 [params]
+    description = "深海映星辰是 Kelley 的技术博客，记录后端架构、AI Agent 工程化、可观测性、Docker/Kubernetes 与云原生实践。"
+
+    [params.author]
+        name = "kelleygo"
+        description = "随笔记录,为技术沉淀."
+        # profile photo of author in author card
+        # 作者头像
+        image = "/images/touxiang.png"
+        # link of followme in author card and footer
+        # 作者卡片里 followme 和页脚作者的链接
+        link = "https://github.com/jianhu2"
+
     [params.site]
         onlyOneLang = false
         # style of theme: auto, light, dark
@@ -54,13 +56,13 @@ hasCJKLanguage = false
         homeTopImg = "/images/home.jpg"
         # title in home top image, support Markdown
         # 主页标题，支持Markdown语法
-        homeTitle = "kelley"
+        homeTitle = "深海映星辰 · kelley"
         # font size(px)
         # 主页标题字号（单位：px）
         homeTitleFontSize = 40
         # content in home top image, support Markdown
         # 主页内容，支持Markdown语法
-        homeContent = "随笔记录,为技术沉淀."
+        homeContent = "后端架构师 / AI Agent 工程化 / 可观测性实践"
         # font size(px)
         # 主页内容字号（单位：px）
         homeContentFontSize = 20
@@ -135,7 +137,7 @@ hasCJKLanguage = false
         # wheher to enable count of visitor and view
         visitor = true
         # wheher to enable theme information
-        themeInfo = true
+        themeInfo = false
 
 
 [menus]
@@ -235,7 +237,7 @@ hasCJKLanguage = false
 
     # enable the following code if there are html statements in your md file
     # 如果md文件中有html语句，请启用以下代码
-    # [markup.goldmark]
-    #     [markup.goldmark.renderer]
-    #         unsafe = true
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
   

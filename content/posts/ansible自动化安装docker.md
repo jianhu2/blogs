@@ -4,6 +4,7 @@ subtitle: ""
 date: 2025-03-18T15:19:04+08:00
 lastmod: "2025-03-18"
 draft: false
+image: "/images/Docker-build.png"
 tags: [ "linux" ]
 hideFromHomePage: false
 ---

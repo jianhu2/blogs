@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Developer tools and community resources cover</title>
+  <desc id="desc">A clean dashboard illustration with software tools, browser plugins, community resources, and coding practice cards.</desc>
+  <rect width="1600" height="900" fill="#f6f8fb"/>
+  <rect x="120" y="92" width="1360" height="716" rx="36" fill="#ffffff" stroke="#dbe3ee" stroke-width="3"/>
+  <rect x="120" y="92" width="1360" height="92" rx="36" fill="#213447"/>
+  <rect x="120" y="142" width="1360" height="42" fill="#213447"/>
+  <circle cx="174" cy="138" r="13" fill="#e76f51"/>
+  <circle cx="218" cy="138" r="13" fill="#f4a261"/>
+  <circle cx="262" cy="138" r="13" fill="#2a9d8f"/>
+  <rect x="360" y="122" width="540" height="32" rx="16" fill="#34495e"/>
+  <rect x="950" y="122" width="124" height="32" rx="16" fill="#4f7cac"/>
+  <rect x="1094" y="122" width="124" height="32" rx="16" fill="#2a9d8f"/>
+  <rect x="1238" y="122" width="124" height="32" rx="16" fill="#f4a261"/>
+
+  <g transform="translate(190 250)">
+    <rect width="318" height="214" rx="24" fill="#eef7f5" stroke="#c6e4df" stroke-width="3"/>
+    <rect x="34" y="34" width="98" height="98" rx="24" fill="#2a9d8f"/>
+    <path d="M64 84h38M83 65v38" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+    <rect x="154" y="42" width="112" height="18" rx="9" fill="#213447"/>
+    <rect x="154" y="78" width="86" height="16" rx="8" fill="#7c8da3"/>
+    <rect x="34" y="160" width="230" height="18" rx="9" fill="#a8d8d0"/>
+  </g>
+
+  <g transform="translate(542 250)">
+    <rect width="318" height="214" rx="24" fill="#f5f1ff" stroke="#d9d0f3" stroke-width="3"/>
+    <rect x="34" y="34" width="98" height="98" rx="22" fill="#6f63c2"/>
+    <path d="M70 60l-24 24 24 24M96 60l24 24-24 24" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="154" y="42" width="116" height="18" rx="9" fill="#213447"/>
+    <rect x="154" y="78" width="74" height="16" rx="8" fill="#7c8da3"/>
+    <rect x="34" y="160" width="230" height="18" rx="9" fill="#d7cff0"/>
+  </g>
+
+  <g transform="translate(894 250)">
+    <rect width="318" height="214" rx="24" fill="#fff6ea" stroke="#f1d5aa" stroke-width="3"/>
+    <rect x="34" y="34" width="98" height="98" rx="22" fill="#f4a261"/>
+    <path d="M64 68h38a22 22 0 010 44H64z" fill="none" stroke="#fff" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M72 112v28M103 112v28" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+    <rect x="154" y="42" width="120" height="18" rx="9" fill="#213447"/>
+    <rect x="154" y="78" width="84" height="16" rx="8" fill="#7c8da3"/>
+    <rect x="34" y="160" width="230" height="18" rx="9" fill="#f5d8ab"/>
+  </g>
+
+  <g transform="translate(1246 250)">
+    <rect width="164" height="214" rx="24" fill="#eef4ff" stroke="#c8d9f1" stroke-width="3"/>
+    <rect x="34" y="34" width="96" height="96" rx="24" fill="#4f7cac"/>
+    <path d="M60 76h44M60 102h44M60 128h30" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+    <rect x="34" y="160" width="96" height="18" rx="9" fill="#bfd2eb"/>
+  </g>
+
+  <g transform="translate(190 510)">
+    <rect width="520" height="210" rx="26" fill="#213447"/>
+    <rect x="34" y="34" width="452" height="36" rx="18" fill="#34495e"/>
+    <path d="M66 118l42-36M66 118l42 36M176 154l42-108M286 82l42 36M286 154l42-36" fill="none" stroke="#a8dadc" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="376" y="94" width="76" height="16" rx="8" fill="#f4a261"/>
+    <rect x="376" y="128" width="54" height="16" rx="8" fill="#2a9d8f"/>
+  </g>
+
+  <g transform="translate(748 510)">
+    <rect width="306" height="210" rx="26" fill="#f9fbfd" stroke="#dbe3ee" stroke-width="3"/>
+    <circle cx="80" cy="76" r="30" fill="#2a9d8f"/>
+    <circle cx="154" cy="76" r="30" fill="#f4a261"/>
+    <circle cx="228" cy="76" r="30" fill="#4f7cac"/>
+    <path d="M80 112v32M154 112v32M228 112v32M80 144h148" stroke="#7c8da3" stroke-width="9" stroke-linecap="round"/>
+    <rect x="46" y="164" width="214" height="18" rx="9" fill="#dbe3ee"/>
+  </g>
+
+  <g transform="translate(1092 510)">
+    <rect width="318" height="210" rx="26" fill="#fbf0ef" stroke="#efc4be" stroke-width="3"/>
+    <rect x="36" y="36" width="246" height="44" rx="22" fill="#e76f51"/>
+    <path d="M70 124h178M70 158h126" stroke="#bf7b75" stroke-width="16" stroke-linecap="round"/>
+    <path d="M246 80l24 28-42-10z" fill="#e76f51"/>
+    <circle cx="74" cy="58" r="8" fill="#fff"/>
+    <circle cx="108" cy="58" r="8" fill="#fff"/>
+    <circle cx="142" cy="58" r="8" fill="#fff"/>
+  </g>
+
+  <path d="M120 784h1360" stroke="#dbe3ee" stroke-width="3"/>
+  <rect x="190" y="758" width="138" height="32" rx="16" fill="#2a9d8f"/>
+  <rect x="352" y="758" width="138" height="32" rx="16" fill="#4f7cac"/>
+  <rect x="514" y="758" width="138" height="32" rx="16" fill="#f4a261"/>
+  <rect x="676" y="758" width="138" height="32" rx="16" fill="#e76f51"/>
+</svg>

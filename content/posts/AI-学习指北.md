@@ -4,6 +4,7 @@ subtitle: ""
 date: 2026-03-17T00:19:04+08:00
 lastmod: "2026-03-18"
 draft: false
+image: "/images/llm.png"
 tags: ["AI"]
 hideFromHomePage: false
 ---
@@ -37,10 +38,10 @@ RAG 是一种将实时信息检索与大语言模型结合的架构，通过从�
     - RAG 不是新模型，而是LLM的增强框架。
     - LLM是RAG的生成引擎，检索系统是RAG的知识补给站。
 
-| **<font style="color:#1f2329;">术语</font>** | **<font style="color:#1f2329;">本质</font>** | **<font style="color:#1f2329;">解决痛点</font>** | **<font style="color:#1f2329;">是否可独立存在</font>** |
+| **术语** | **本质** | **解决痛点** | **是否可独立存在** |
 | --- | --- | --- | --- |
-| <font style="color:rgb(0, 0, 0);">LLM</font> | <font style="color:rgb(0, 0, 0);">通用语言智能体</font> | <font style="color:rgb(0, 0, 0);">自动化文本生成与理解</font> | <font style="color:rgb(0, 0, 0);">是</font> |
-| <font style="color:rgb(0, 0, 0);">RAG</font> | <font style="color:rgb(0, 0, 0);">LLM的“扩展知识站”</font> | <font style="color:rgb(0, 0, 0);">突破静态知识边界+减少幻觉</font> | <font style="color:rgb(0, 0, 0);"> 否（依赖LLM）</font> |
+| LLM | 通用语言智能体 | 自动化文本生成与理解 | 是 |
+| RAG | LLM的“扩展知识站” | 突破静态知识边界+减少幻觉 | 否（依赖LLM） |
 
 
 ### MCP（Model Context Protocol）
@@ -64,13 +65,13 @@ RAG 解决“知道什么”，MCP 解决“能做什么”
 #### 解决了什么问题？
 以[DeepSeek-R1](https://huggingface.co/deepseek-ai/DeepSeek-R1)为例，它提供了卓越的推理能力，但是其超大的模型尺寸(671B)会消耗较大的模型推理资源。为此我们可以通过模型蒸馏的方式将 DeepSeek-R1 的推理能力迁移到开源小尺寸模型(例如[Llama-3.2-3B](https://huggingface.co/meta-llama/Llama-3.2-3B))上，从而在保证效果的同时降低推理消耗成本。
 
-| **<font style="color:rgb(0, 0, 0);">问题</font>** | **<font style="color:rgb(0, 0, 0);">蒸馏技术的作用</font>** |
+| **问题** | **蒸馏技术的作用** |
 | --- | --- |
-| **<font style="color:rgb(0, 0, 0);">大模型太重，无法部署在移动端或边缘设备</font>** | <font style="color:rgb(0, 0, 0);">通过蒸馏将模型压缩成轻量化模型（如从 </font>[<font style="color:rgb(0, 0, 0);">DeepSeek-R1</font>](https://huggingface.co/deepseek-ai/DeepSeek-R1)<br/><font style="color:rgb(0, 0, 0);">→ </font>[<font style="color:rgb(0, 0, 0);">Llama-3.2-3B</font>](https://huggingface.co/meta-llama/Llama-3.2-3B)<br/><font style="color:rgb(0, 0, 0);">）</font> |
-| **<font style="color:rgb(0, 0, 0);">推理速度太慢，延迟高</font>** | <font style="color:rgb(0, 0, 0);">Student 模型更小更快，能在低延迟场景下运行</font> |
-| **<font style="color:rgb(0, 0, 0);">模型训练代价高（算力昂贵）</font>** | <font style="color:rgb(0, 0, 0);">用大模型离线生成指导信号，Student 可快速训练</font> |
-| **<font style="color:rgb(0, 0, 0);">数据不足，难以训练小模型</font>** | <font style="color:rgb(0, 0, 0);">Teacher 提供“软标签”补充知识，缓解数据稀缺问题</font> |
-| **<font style="color:rgb(0, 0, 0);">专业知识稀缺（如哪种虫害属于哪种病）</font>** | <font style="color:rgb(0, 0, 0);"> 利用大模型知识迁移到小模型</font> |
+| **大模型太重，无法部署在移动端或边缘设备** | 通过蒸馏将模型压缩成轻量化模型（如从 [DeepSeek-R1](https://huggingface.co/deepseek-ai/DeepSeek-R1)<br/>→ [Llama-3.2-3B](https://huggingface.co/meta-llama/Llama-3.2-3B)<br/>） |
+| **推理速度太慢，延迟高** | Student 模型更小更快，能在低延迟场景下运行 |
+| **模型训练代价高（算力昂贵）** | 用大模型离线生成指导信号，Student 可快速训练 |
+| **数据不足，难以训练小模型** | Teacher 提供“软标签”补充知识，缓解数据稀缺问题 |
+| **专业知识稀缺（如哪种虫害属于哪种病）** | 利用大模型知识迁移到小模型 |
 
 
 ### 部署大模型服务器配置要求：
@@ -144,4 +145,3 @@ NewsNow：[https://github.com/ourongxing/newsnow](https://github.com/ourongxing/
 ### Books
 + [LLM大模型基础](https://github.com/ZJU-LLMs/Foundations-of-LLMs)
 + [参考来源](https://yigegongjiang.notion.site/AI-2e72fbdad5bc4ee4b8f2c79cfaf927d2)
-
