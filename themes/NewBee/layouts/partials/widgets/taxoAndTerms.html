@@ -1,0 +1,17 @@
+
+{{ $hideSidebar := and (eq .Kind "term") (eq .Section "tags") }}
+{{ partial "widgets/hero.html" . }}
+<div class="zhuti-0">
+    <div class="container">
+        <div class="zhuti">
+            <div class="zhuti-l{{ if $hideSidebar }} zhuti-l-home{{ end }}">
+                {{ partial "widgets/content-all.html" . }}
+            </div>
+            {{ if not $hideSidebar }}
+            <div class="zhuti-r">
+                {{ partial "widgets/zhuti-r.html" . }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{{- $primaryTag := "" -}}
+{{- with .Params.tags -}}
+    {{- $primaryTag = index . 0 -}}
+{{- end -}}
+{{- $style := partial "widgets/tag-style.html" $primaryTag -}}
+{{- $summaryText := "" -}}
+{{- with .Description -}}
+    {{- $summaryText = . -}}
+{{- else -}}
+    {{- $summaryText = .Plain -}}
+{{- end -}}
+
+<a class="post-row" href="{{ .Permalink }}" style="--card-from: {{ $style.from }}; --card-to: {{ $style.to }};">
+    <span class="post-row-stripe"></span>
+    <div class="post-row-main">
+        <div class="post-row-head">
+            <span class="post-row-title">{{ .Title }}</span>
+            <span class="post-row-date">{{ .PublishDate.Format "2006-01-02" }}</span>
+        </div>
+        <div class="post-row-summary">{{ $summaryText | plainify | truncate 110 "…" }}</div>
+        <div class="post-row-meta">
+            <span><i class="fa fa-clock-o"></i> {{ .ReadingTime }} {{ i18n "postInfo_minute" .ReadingTime }}</span>
+            <span><i class="fa fa-pencil"></i> {{ .WordCount }} {{ i18n "postInfo_wordsCount" }}</span>
+        </div>
+    </div>
+</a>
