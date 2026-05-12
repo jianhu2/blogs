@@ -4,7 +4,7 @@ subtitle: ""
 date: 2024-04-21T16:19:04+08:00
 lastmod: "2024-04-21"
 draft: false
-tags: ["linux"]
+tags: ["linux", "dev-env"]
 hideFromHomePage: false
 ---
 

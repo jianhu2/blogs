@@ -4,7 +4,7 @@ subtitle: ""
 date: 2022-05-10T16:19:04+08:00
 lastmod: "2023-01-20"
 draft: false
-tags: ["linux"]
+tags: ["network"]
 hideFromHomePage: false
 ---
 

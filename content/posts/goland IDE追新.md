@@ -4,7 +4,7 @@ subtitle: ""
 date: 2023-07-21T16:19:04+08:00
 lastmod: "2026-05-10"
 draft: false
-tags: ["IDE", "Go"]
+tags: ["dev-env"]
 hideFromHomePage: false
 deprecated: true
 ---

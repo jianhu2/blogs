@@ -4,7 +4,7 @@ subtitle: ""
 date: 2023-05-10T16:19:04+08:00
 lastmod: "2023-07-20"
 draft: false
-tags: ["k8s","docker"]
+tags: ["linux"]
 hideFromHomePage: false
 ---
 

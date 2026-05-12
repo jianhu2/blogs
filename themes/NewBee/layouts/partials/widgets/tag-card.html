@@ -1,10 +1,11 @@
 {{ range .Data.Terms.ByCount }}
 {{ $tagName := .Page.Title }}
+{{ $tagDisplayName := partial "widgets/tag-display-name.html" $tagName }}
 {{ $count := .Count }}
 {{ $style := partial "widgets/tag-style.html" $tagName }}
 <a class="tag-pill" href="{{ .Page.Permalink }}" style="--card-from: {{ $style.from }}; --card-to: {{ $style.to }};">
     <span class="tag-pill-icon"><i class="fa {{ $style.icon }}" aria-hidden="true"></i></span>
-    <span class="tag-pill-name">{{ $tagName }}</span>
+    <span class="tag-pill-name">{{ $tagDisplayName }}</span>
     <span class="tag-pill-count">{{ $count }}</span>
 </a>
 {{ end }}

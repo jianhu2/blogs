@@ -1,0 +1,9 @@
+{{- $tagDisplayNames := dict
+    "dev-env" "开发环境"
+-}}
+{{- $key := lower . -}}
+{{- $displayName := index $tagDisplayNames $key -}}
+{{- if not $displayName -}}
+    {{- $displayName = . -}}
+{{- end -}}
+{{- return $displayName -}}

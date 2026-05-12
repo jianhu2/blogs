@@ -148,6 +148,7 @@
 {{ else if eq .Kind "term" }}
     {{ if eq .Section "tags" }}
         {{ $tagStyle := partial "widgets/tag-style.html" .Title }}
+        {{ $tagDisplayName := partial "widgets/tag-display-name.html" .Title }}
         {{ $postCount := len .Pages }}
         {{ $currentTagLower := lower .Title }}
         {{/* collect co-occurring tags (excluding self), dedupe case-insensitively */}}
@@ -180,7 +181,7 @@
                 <div class="hero-tag-icon">
                     <i class="fa {{ $tagStyle.icon }}" aria-hidden="true"></i>
                 </div>
-                <div class="hero-tag-name"># {{ .Title }}</div>
+                <div class="hero-tag-name"># {{ $tagDisplayName }}</div>
                 <div class="hero-tag-meta">{{ $postCount }} 篇文章</div>
             </div>
             {{ with $related }}
@@ -188,8 +189,9 @@
                     <span class="hero-tag-related-label">相关标签</span>
                     {{ range . }}
                         {{ $rs := partial "widgets/tag-style.html" . }}
+                        {{ $relatedDisplayName := partial "widgets/tag-display-name.html" . }}
                         <a class="hero-tag-related-pill" href="{{ printf "tags/%s/" (. | urlize) | relURL }}" style="--pill-from: {{ $rs.from }}; --pill-to: {{ $rs.to }};">
-                            <i class="fa {{ $rs.icon }}"></i> {{ . }}
+                            <i class="fa {{ $rs.icon }}"></i> {{ $relatedDisplayName }}
                         </a>
                     {{ end }}
                 </div>

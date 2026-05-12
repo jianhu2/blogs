@@ -6,7 +6,7 @@ lastmod: "2025-07-19"
 draft: false
 description: "docker容器夸主机通信，指定docker数据存储路径，常用的docker命令"
 image: "/images/Docker-build.png"
-tags: [ "docker" ]
+tags: ["linux"]
 hideFromHomePage: false
 ---
 

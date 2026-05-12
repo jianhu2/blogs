@@ -4,7 +4,7 @@ subtitle: ""
 date: 2023-11-02T10:19:04+08:00
 lastmod: "2023-11-03"
 draft: false
-tags: ["开发环境"]
+tags: ["dev-env"]
 hideFromHomePage: false
 ---
 

@@ -4,7 +4,7 @@ subtitle: ""
 date: 2025-03-18T11:19:04+08:00
 lastmod: "2025-03-18"
 draft: false
-tags: [ "linux" ]
+tags: ["linux"]
 hideFromHomePage: false
 ---
 

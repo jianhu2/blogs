@@ -4,7 +4,7 @@ subtitle: ""
 date: 2021-03-10T16:19:04+08:00
 lastmod: "2023-05-20"
 draft: false
-tags: ["ssh"]
+tags: ["network"]
 hideFromHomePage: false
 ---
 

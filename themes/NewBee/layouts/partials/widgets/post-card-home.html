@@ -2,6 +2,7 @@
 {{- with .Params.tags -}}
     {{- $primaryTag = index . 0 -}}
 {{- end -}}
+{{- $primaryTagDisplayName := partial "widgets/tag-display-name.html" $primaryTag -}}
 {{- $style := partial "widgets/tag-style.html" $primaryTag -}}
 {{- $summaryText := "" -}}
 {{- with .Description -}}
@@ -13,7 +14,7 @@
 <a class="card-mini" href="{{ .Permalink }}" style="--card-from: {{ $style.from }}; --card-to: {{ $style.to }};">
     <div class="card-mini-cover">
         <i class="fa {{ $style.icon }}" aria-hidden="true"></i>
-        {{ with $primaryTag }}<span class="card-mini-tag">#{{ . }}</span>{{ end }}
+        {{ with $primaryTag }}<span class="card-mini-tag">#{{ $primaryTagDisplayName }}</span>{{ end }}
     </div>
     <div class="card-mini-body">
         <div class="card-mini-title">{{ .Title }}</div>

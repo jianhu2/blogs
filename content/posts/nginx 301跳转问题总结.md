@@ -4,7 +4,7 @@ subtitle: ""
 date: 2023-07-25T10:19:04+08:00
 lastmod: "2023-07-25"
 draft: false
-tags: ["nginx"]
+tags: ["network"]
 hideFromHomePage: false
 ---
 
