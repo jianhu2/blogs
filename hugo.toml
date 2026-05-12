@@ -106,11 +106,49 @@ hasCJKLanguage = true
         # 最新文章最大显示数量
         maxPageNewestCount = 8
 
+    [params.homeTools]
+        enable = true
+        kicker = "SERVICE HUB"
+        title = "服务直达"
+        description = "几个长期在线的小服务，欢迎试用。"
+
+        [[params.homeTools.items]]
+            name = "探测服务"
+            url = "https://n3.jianhu.cc/"
+            description = "主机状态、网络延迟、流量与资源指标的统一观测面板。"
+            icon = "fa-heartbeat"
+            status = "在线"
+            live = "online"
+
+        [[params.homeTools.items]]
+            name = "Codex 中转"
+            url = "https://sub2api.jianhu.cc/"
+            description = "OpenAI Codex API 自建中转，统一鉴权与转发。"
+            icon = "fa-exchange"
+            status = "在线"
+            live = "online"
+
+        [[params.homeTools.items]]
+            name = "在线简历"
+            url = "https://resume.jianhu.cc/zh"
+            description = "支持 AI 在线编辑的个人简历，可中英文切换。"
+            icon = "fa-id-card-o"
+            status = "在线"
+            live = "online"
+
+        [[params.homeTools.items]]
+            name = "工具集合"
+            url = "https://tools.jianhu.cc/"
+            description = "前端、运维与 AI 类小工具的聚合站点。"
+            icon = "fa-wrench"
+            status = "建设中"
+            live = "building"
+
     # Valine comment
     # Valine评论（详情请移步：https://valine.js.org/）
     [params.valine]
         # 是否开启Valine评论系统
-        enable = true
+        enable = false
         # appid，具体请参考：https://valine.js.org/configuration.html#appId
         appid = '8rDSi5Yno1x54JaRiqlaJenc-gzGzoHsz'
         # appKey，具体请参考：https://valine.js.org/configuration.html#appKey
@@ -125,6 +163,8 @@ hasCJKLanguage = true
         visitor = true
         # 单页最大评论数目
         pageSize = 5
+        # LeanCloud REST API 服务器地址；海外版或自定义域名项目需要填写控制台里的 REST API 服务器地址
+        # serverURLs = "https://xxxxxxxx.api.lncldglobal.com"
 
     # footer
     # 页面底部配置

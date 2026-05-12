@@ -1,14 +1,32 @@
+{{- $valine := .Site.Params.valine -}}
 <div id="vcomments"></div>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<script type="text/javascript">
-    new Valine({
-        el: '#vcomments',
-        appId: {{ .Site.Params.valine.appId }},
-        appKey: {{ .Site.Params.valine.appKey }},
-        avatar: {{ .Site.Params.valine.avatar }},
-        placeholder: {{ .Site.Params.valine.placeholder }},
-        requiredFields: {{ .Site.Params.valine.requiredFields }},
-        visitor: {{ .Site.Params.valine.visitor }},
-        pageSize: {{ .Site.Params.valine.pageSize}},
-});
+<script src="https://unpkg.com/valine@1.5.3/dist/Valine.min.js"></script>
+<script>
+    (function () {
+        var commentRoot = document.getElementById('vcomments');
+        if (!commentRoot) return;
+
+        if (typeof Valine === 'undefined') {
+            commentRoot.innerHTML = '<div class="comment-error">评论组件加载失败，请稍后刷新重试。</div>';
+            return;
+        }
+
+        try {
+            new Valine({
+                el: '#vcomments',
+                appId: {{ $valine.appId | jsonify | safeJS }},
+                appKey: {{ $valine.appKey | jsonify | safeJS }},
+                avatar: {{ $valine.avatar | default "robohash" | jsonify | safeJS }},
+                placeholder: {{ $valine.placeholder | default "输入你的评论" | jsonify | safeJS }},
+                requiredFields: {{ $valine.requiredFields | default (slice "nick") | jsonify | safeJS }},
+                visitor: {{ $valine.visitor | default false }},
+                pageSize: {{ $valine.pageSize | default 10 }},
+                path: window.location.pathname{{ with $valine.serverURLs }},
+                serverURLs: {{ . | jsonify | safeJS }}{{ end }}
+            });
+        } catch (err) {
+            commentRoot.innerHTML = '<div class="comment-error">评论初始化失败，请检查 Valine / LeanCloud 配置。</div>';
+            if (window.console && console.error) console.error('Valine init failed:', err);
+        }
+    }());
 </script>

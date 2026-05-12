@@ -1,6 +1,14 @@
 #vcomments.v {
     margin: 20px 10px;
 }
+.comment-error {
+    margin: 20px 10px;
+    padding: 14px 16px;
+    color: var(--danger);
+    background: rgba(var(--danger-rgb), .08);
+    border: 1px solid rgba(var(--danger-rgb), .18);
+    border-radius: 12px;
+}
 .vwrap {
     margin: 0 10px;
     background-color: var(--bgc-2);

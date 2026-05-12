@@ -1,0 +1,33 @@
+{{- $tools := .Site.Params.homeTools.items -}}
+{{- if and .Site.Params.homeTools.enable $tools -}}
+    <section class="home-tools" aria-labelledby="home-tools-title">
+        <div class="home-tools-head">
+            <div class="home-tools-kicker">{{ .Site.Params.homeTools.kicker | default "SERVICE HUB" }}</div>
+            <h2 id="home-tools-title">{{ .Site.Params.homeTools.title | default "自建服务" }}</h2>
+            <p>{{ .Site.Params.homeTools.description | default "运行中的自建服务入口。" }}</p>
+        </div>
+        <div class="home-tools-grid">
+            {{ range $tools }}
+                {{ $external := hasPrefix .url "http" }}
+                {{ $live := .live | default "online" }}
+                <a class="home-tool-card" href="{{ .url }}"{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>
+                    <span class="home-tool-icon" aria-hidden="true">
+                        <i class="fa {{ .icon | default "fa-external-link" }}"></i>
+                    </span>
+                    <span class="home-tool-body">
+                        <span class="home-tool-head">
+                            <span class="home-tool-name">{{ .name }}</span>
+                            <span class="home-tool-status home-tool-status-{{ $live }}">
+                                <span class="home-tool-dot"></span>{{ .status | default "在线" }}
+                            </span>
+                        </span>
+                        <span class="home-tool-desc">{{ .description }}</span>
+                    </span>
+                    <span class="home-tool-arrow" aria-hidden="true">
+                        <i class="fa {{ if $external }}fa-external-link{{ else }}fa-arrow-right{{ end }}"></i>
+                    </span>
+                </a>
+            {{ end }}
+        </div>
+    </section>
+{{- end -}}
