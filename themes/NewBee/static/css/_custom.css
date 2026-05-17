@@ -1142,3 +1142,13 @@
         font-size: 12px;
     }
 }
+
+/* default note 正文：note-content 在 light/dark 两种模式下都是近白底（dark 模式 style-dark.css 把背景覆盖成 rgba(255,255,255,.6)），所以文字用固定深灰，避免原来 var(--default) 浅灰打在近白底上发虚 */
+.default-content,
+.default-content a {
+    color: rgb(50, 50, 50);
+    text-shadow: none;
+}
+.default-content strong {
+    color: rgb(20, 20, 20);
+}
