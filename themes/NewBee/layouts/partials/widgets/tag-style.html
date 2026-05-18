@@ -1,10 +1,13 @@
 {{- $tagStyles := dict
-    "ai"       (dict "from" "#6366f1" "to" "#a855f7" "icon" "fa-magic")
-    "linux"    (dict "from" "#f97316" "to" "#f59e0b" "icon" "fa-linux")
-    "network"  (dict "from" "#2563eb" "to" "#3b82f6" "icon" "fa-share-alt")
-    "website"  (dict "from" "#14b8a6" "to" "#06b6d4" "icon" "fa-globe")
-    "tools"    (dict "from" "#84cc16" "to" "#22c55e" "icon" "fa-wrench")
-    "dev-env"  (dict "from" "#e11d48" "to" "#f43f5e" "icon" "fa-cogs")
+    "ai"            (dict "from" "#6366f1" "to" "#a855f7" "icon" "fa-magic")
+    "linux"         (dict "from" "#f97316" "to" "#f59e0b" "icon" "fa-linux")
+    "network"       (dict "from" "#2563eb" "to" "#3b82f6" "icon" "fa-share-alt")
+    "website"       (dict "from" "#14b8a6" "to" "#06b6d4" "icon" "fa-globe")
+    "tools"         (dict "from" "#84cc16" "to" "#22c55e" "icon" "fa-wrench")
+    "dev-env"       (dict "from" "#e11d48" "to" "#f43f5e" "icon" "fa-cogs")
+    "oracle-cloud"  (dict "from" "#c74634" "to" "#ee5a3b" "icon" "fa-cloud")
+    "lxc"           (dict "from" "#0e7490" "to" "#0891b2" "icon" "fa-cubes")
+    "gost"          (dict "from" "#059669" "to" "#10b981" "icon" "fa-exchange")
 -}}
 {{- $key := lower . -}}
 {{- $style := index $tagStyles $key -}}
