@@ -8,9 +8,14 @@
         </div>
         <div class="home-tools-grid">
             {{ range $tools }}
-                {{ $external := hasPrefix .url "http" }}
                 {{ $live := .live | default "online" }}
+                {{ $off := or (eq $live "maintenance") (not .url) }}
+                {{ $external := and (not $off) (hasPrefix .url "http") }}
+                {{ if $off }}
+                <div class="home-tool-card is-disabled" aria-disabled="true" title="{{ .hint | default "维护中，暂时无法跳转" }}">
+                {{ else }}
                 <a class="home-tool-card" href="{{ .url }}"{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>
+                {{ end }}
                     <span class="home-tool-icon" aria-hidden="true">
                         <i class="fa {{ .icon | default "fa-external-link" }}"></i>
                     </span>
@@ -22,11 +27,12 @@
                             </span>
                         </span>
                         <span class="home-tool-desc">{{ .description }}</span>
+                        {{ if $off }}<span class="home-tool-hint"><i class="fa fa-wrench" aria-hidden="true"></i> {{ .hint | default "维护中，暂时无法跳转" }}</span>{{ end }}
                     </span>
                     <span class="home-tool-arrow" aria-hidden="true">
-                        <i class="fa {{ if $external }}fa-external-link{{ else }}fa-arrow-right{{ end }}"></i>
+                        <i class="fa {{ if $off }}fa-lock{{ else if $external }}fa-external-link{{ else }}fa-arrow-right{{ end }}"></i>
                     </span>
-                </a>
+                {{ if $off }}</div>{{ else }}</a>{{ end }}
             {{ end }}
         </div>
     </section>
