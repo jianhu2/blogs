@@ -106,7 +106,7 @@ deprecated: true                    # 标记为过时，渲染会有提示
 `themes/NewBee/layouts/partials/widgets/tag-style.html` 是真相源。每个 tag 名映射到一组配色（`from`/`to` 渐变 + FontAwesome 图标）：
 
 ```
-ai / linux / network / website / tools / dev-env / oracle-cloud / lxc / gost
+ai / linux / network / website / tools / dev-env / oracle-cloud / lxc / gost / nezha
 ```
 
 - **新增 tag** 时如果想要专属配色，必须在该文件 `$tagStyles` 字典里加一条；不加则回落到 fallback 灰色 `#64748b/#94a3b8` + `fa-file-text-o`
