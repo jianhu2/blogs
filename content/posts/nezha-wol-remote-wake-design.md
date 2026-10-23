@@ -42,7 +42,7 @@ slug: "nezha-wol-remote-wake-design"
 ### 2.1 系统结构图
 ```text
                          ┌─────────────────────────────────────────────────────┐
-                         │   哪吒面板服务器  43.155.*.* (VM-0-15-ubuntu)         │
+                         │   哪吒面板服务器  (公网 VPS，地址已脱敏)              │
    admin 浏览器          │                                                     │
     (已登录面板)         │   nginx :443 ──proxy──► nezha-service 容器 127.0.0.1:8008
         │  HTTPS         │                           │  (ghcr.io/nezhahq/nezha 2.4.1)
@@ -56,7 +56,7 @@ slug: "nezha-wol-remote-wake-design"
                                        下发 Task(Exec / TCPPing)  ▲  回报 stdout/exit、探测结果
                                                       │
                          ┌────────────────────────────┴───────────────────────┐
-                         │   duckling  OpenWrt  哪吒 id=19  uuid 4abdb2d2-…      │
+                         │   duckling  OpenWrt  哪吒 id=19                       │
                          │   br-lan 192.168.31.1/24   br-wan 192.168.8.124/24   │
                          │   角色：WoL 发包节点 + TCP 探测节点                   │
                          │   能力：bash5.2(/dev/udp,/dev/tcp 可用)、nc、opkg     │
@@ -64,7 +64,7 @@ slug: "nezha-wol-remote-wake-design"
                                                       │ 同一物理网段 192.168.8.0/24（经网关 192.168.8.1）
                          ┌────────────────────────────┴───────────────────────┐
                          │   笔记本 LAPTOP-SL0PIE1O  (Windows 11 家庭版)        │
-                         │   eth2 Realtek GbE  MAC 38-F3-AB-13-40-A1 (有线)     │
+                         │   eth2 Realtek GbE  MAC AA-BB-CC-DD-EE-FF (有线)     │
                          │   192.168.8.108  (= ZeroTier 192.168.191.16)         │
                          │   RDP:3389 (RDP Wrapper)   WakeOnMagicPacket=Enabled │
                          └──────────────────────────────────────────────────────┘
@@ -94,8 +94,8 @@ admin 点击 → nginx → nezha-service(鉴权) → gRPC 下发 Exec 任务 →
 | M3 TCP 在线监控 | 哪吒 `services` 表 id=6「笔记本-8.108 RDP在线」 | duckling 每 60s 探 `192.168.8.108:3389`，面板展示在线/离线+延迟 |
 | M4 离线告警脚本 | `/usr/local/sbin/nezha-debounced-offline-monitor.py` | 每分钟登录面板拉 server 状态，防抖后飞书告警（既有） |
 | M5 TCP 告警脚本 | `/usr/local/sbin/nezha-debounced-tcp-monitor.py` | 每分钟直探 TCP 端点，防抖后飞书告警（既有） |
-| M6 反向代理 | 宿主 nginx `sites-available/n3.jianhu.cc` | TLS 终结，443 → 127.0.0.1:8008 |
-| M7 凭据与鉴权 | `admin_credentials.txt` / 面板 JWT+CSRF+WAF | 脚本登录凭据；面板会话鉴权与暴力登录防护 |
+| M6 反向代理 | 宿主 nginx `sites-available/<面板域名>` | TLS 终结，443 → 127.0.0.1:8008 |
+| M7 凭据与鉴权 | 监控脚本凭据配置 / 面板 JWT+CSRF+WAF | 脚本登录凭据；面板会话鉴权与暴力登录防护 |
 
 ### 3.1 M1 唤醒触发任务（crons id=2）
 | 字段 | 值 | 说明 |
@@ -120,7 +120,7 @@ admin 点击 → nginx → nezha-service(鉴权) → gRPC 下发 Exec 任务 →
 
 ## 4. 接口设计
 
-### 4.1 面板 HTTP API（经 nginx `https://n3.jianhu.cc`）
+### 4.1 面板 HTTP API（经 nginx `https://<面板域名>`）
 | 方法/路径 | 用途 | 鉴权 | 备注 |
 |-----------|------|------|------|
 | `POST /api/v1/login` | 用户名/密码换 JWT | 无（登录本身） | 直连 127.0.0.1 时需带 `nz-realip` 头；失败累积触发 WAF |
@@ -161,9 +161,9 @@ admin 点击 → nginx → nezha-service(鉴权) → gRPC 下发 Exec 任务 →
 
 ### 5.1 魔术包构造算法
 ```text
-输入: MAC = 38:F3:AB:13:40:A1
+输入: MAC = AA:BB:CC:DD:EE:FF
 步骤:
-  hex   = 去冒号(MAC)              # "38F3AB1340A1"
+  hex   = 去冒号(MAC)              # "AABBCCDDEEFF"
   body  = hex 重复 16 次           # 16 × 6 字节
   packet= 0xFF×6  ++  body         # 6 + 96 = 102 字节
 输出: 102 字节二进制，经 printf 写入 UDP 套接字
@@ -314,7 +314,7 @@ admin浏览器     nginx:443     nezha-service       duckling(agent)        笔�
 ## 8. 安全设计
 - **访问控制**：唤醒/查看均需面板 admin 会话（JWT）；非安全请求受 CSRF 保护。
 - **暴力防护**：登录失败累积写 `nz_waf`，源 IP 被临时拦截（表现为 403）。
-- **风险点（待整改）**：`admin_credentials.txt` 以**明文**保存 admin 账号密码，供 M4 每分钟登录。建议改用面板 **API Token**（`api_tokens`）替代明文密码登录，降低泄露面并避免每分钟新建 JWT 会话。
+- **改进建议**：M4 需要每分钟用账号密码登录面板拉取状态。建议改用面板 **API Token**（`api_tokens`）替代密码登录，缩小凭据暴露面，并避免每分钟新建 JWT 会话。
 - **密钥材料**：JWT/agent secret 位于容器配置 `config.yaml`，不出库；本文不含任何口令。
 
 ---
@@ -357,25 +357,25 @@ admin浏览器     nginx:443     nezha-service       duckling(agent)        笔�
 | 点"执行"报错/`last_result=0` | 看面板弹窗 stdout；核 duckling 是否有 base64/timeout/bash、agent 是否允许命令执行 |
 | 唤不醒 | 确认是"正常关机"而非死机；查 BIOS WoL、网卡 WoL；确认走的是有线 eth2；确认 MAC 正确 |
 | 监控恒显示离线 | 确认仅 duckling 探测（`skip_servers={19:true}`）；确认 duckling 与 .108 同网段可达 |
-| 每分钟登录 403 | admin 密码变更需同步 `admin_credentials.txt`；清 `nz_waf` 中本机 IP 拦截 |
+| 每分钟登录 403 | admin 密码变更需同步监控脚本的凭据配置；清 `nz_waf` 中本机 IP 拦截 |
 
 ---
 
 ## 11. 局限
 - 仅能唤醒"正常关机 + 已启用 WoL + 有线"的目标；死机需物理断电。
 - 依赖 duckling 在线；duckling 掉线则无法唤醒/探测。
-- 明文凭据与"每分钟登录"为既有设计债，建议迁移 API Token。
+- 监控脚本"每分钟密码登录"为既有设计债，建议迁移 API Token。
 
 ---
 
 ## 12. 附录：关键参数
 | 项 | 值 |
 |----|-----|
-| 唤醒目标 IP / MAC | `192.168.8.108` / `38-F3-AB-13-40-A1`（eth2 有线） |
+| 唤醒目标 IP / MAC | `192.168.8.108` / `AA-BB-CC-DD-EE-FF`（eth2 有线） |
 | 执行/探测节点 | duckling，哪吒 id=19，`br-wan 192.168.8.124` |
 | 触发任务 | `crons` id=2「WoL-唤醒笔记本」 |
 | TCP 监控 | `services` id=6「笔记本-8.108 RDP在线」→ `192.168.8.108:3389` |
-| 面板 | `n3.jianhu.cc`（nginx）→ 容器 `127.0.0.1:8008`（nezha 2.4.1） |
+| 面板 | `<面板域名>`（nginx）→ 容器 `127.0.0.1:8008`（nezha 2.4.1） |
 | 相关文档 | `docs/win-rdp-wrapper-192.168.191.16.md`（RDP 排障 + WoL 手动步骤） |
 | 参考项目 | [WOL-plus](https://github.com/leeyeel/WOL-plus)（见 §13） |
 
@@ -400,10 +400,10 @@ admin浏览器     nginx:443     nezha-service       duckling(agent)        笔�
 
 ### 13.2 可借鉴点
 1. **用 `etherwake` 替代"静态 ARP + /dev/udp"**：duckling 有 `opkg`，可 `opkg install etherwake`，则发包简化为
-   `etherwake -i br-wan 38:F3:AB:13:40:A1`——它直接构造二层广播帧，**无需手动钉 ARP、无需 /dev/udp**，更健壮。
+   `etherwake -i br-wan AA:BB:CC:DD:EE:FF`——它直接构造二层广播帧，**无需手动钉 ARP、无需 /dev/udp**，更健壮。
    本系统选 `/dev/udp` 仅因"免安装、已验证可用"；若后续想降复杂度，这是首选替代实现（把 M2 的 `command` 换成 etherwake 即可，其余不变）。
 2. **远程关机能力**：如需"远程关机"闭环，可参考其 Client（抓 `0x0842` 判别码帧）。本系统目前关机依赖 SSH/RDP，已够用；若要免登录关机再评估。注意其已知问题——关机帧本身也是合法魔术包，可能先唤醒再关机，务必限本网段使用。
-3. **安全告诫印证**：WOL-plus 默认 `admin/admin123` 与 6 字节弱判别码的问题，正对应本系统 §8 的整改项（明文凭据 → 迁移 API Token、避免弱口令）。
+3. **安全告诫印证**：WOL-plus 默认 `admin/admin123` 与 6 字节弱判别码的问题，正对应本系统 §8 的整改项（密码登录 → 迁移 API Token、避免弱口令）。
 
 ### 13.3 不直接采用其整体方案的原因
 WOL-plus 需要在目标笔记本常驻 Client、另开 Web 服务与独立鉴权；本系统的目标是**零新增服务、复用既有哪吒面板与内网节点**，并以"在线检测 + 幂等触发"满足低频远程开机诉求。故仅借鉴其 `etherwake` 发包与关机思路，不引入其独立服务端。
